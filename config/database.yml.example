@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: movle_development
+  pool: 5
+  username: movle_dev
+  password: password

@@ -1,0 +1,27 @@
+<% generated_id= "presentation-" + presentation.id.to_s %>
+<div class="item_box">
+  <div class="item_icon">
+    <a href=<%=  presentation_url(presentation) %>>
+      <img src="/assets/slides_num.png"/>
+    </a>
+  </div>
+  <div class="item_thumbnail <%="item_thumbnail_draft_wrapper" if presentation.draft %>">
+      <%= link_to(presentation_url(presentation)) do %>
+        <div class="item_thumbnail_img" id="<%=generated_id%>"></div>
+        <% if presentation.draft %>
+          <div class="item_thubmnail_draft">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              Draft
+          </div>
+        <% end %>
+      <%end%>
+  </div>
+  <div class="item_title">
+    <%= link_to(presentation_url(presentation)) do %>
+      <p class="title"><%= presentation.title %></p>
+    <%end%>
+  </div>
+</div>
+<script>
+  document.getElementById("<%=generated_id%>").style.backgroundImage = "url('<%=presentation.thumbnail_url%>')";
+</script>
