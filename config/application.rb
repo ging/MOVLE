@@ -38,28 +38,6 @@ module MOVLE
     # I18n fallbacks: rails will fallback to config.i18n.default_locale translation
     config.i18n.fallbacks = true
 
-    # #Plugins
-    # config.available_plugins = []
-    # pluginsPath = "./movle_plugins"
-    # if File.directory?(pluginsPath)
-    #   Dir.glob(pluginsPath+"/*").select {|f| File.directory? f}.each do |f|
-    #     config.available_plugins << f.gsub(pluginsPath+"/","")
-    #   end
-    # end
-
-    # config.enabled_plugins = []
-    # if config.APP_CONFIG['plugins'].is_a? Array
-    #   config.enabled_plugins = (config.APP_CONFIG['plugins'] & config.available_plugins)
-    # end
-
-    # #Load MOVLE plugins
-    # config.before_configuration do
-    #   config.enabled_plugins.each do |eplugin|
-    #     $:.unshift File.expand_path("#{__FILE__}/../../movle_plugins/#{eplugin}/lib")
-    #     require eplugin
-    #   end
-    # end
-
     #Tags settings
     config.tagsSettings = (config.APP_CONFIG['tagsSettings'] || {})
     default_tags = {

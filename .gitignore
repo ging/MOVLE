@@ -22,11 +22,6 @@ config/initializers/exception_notification.rb
 /documents
 /public/system
 
-#Plugins
-movle_plugins/*
-!movle_plugins/documents
-!movle_plugins/vish_editor
-
 config/deploy/*
 !config/deploy/example.yml
 
