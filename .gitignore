@@ -22,20 +22,10 @@ config/initializers/exception_notification.rb
 /documents
 /public/system
 
-# scorm zip files
-public/scorm/12/presentations/*
-public/scorm/2004/presentations/*
-public/scorm/12/games/*
-public/scorm/2004/games/*
-public/tmp/scorm/*
-public/tmp/json/*
-public/tmp/qti/*
-public/tmp/moodlequizxml/*
-
-#Code
-public/code/scormfiles/*
-public/code/game_templates/*
-public/code/webapps/*
+#Plugins
+movle_plugins/*
+!movle_plugins/documents
+!movle_plugins/vish_editor
 
 config/deploy/*
 !config/deploy/example.yml

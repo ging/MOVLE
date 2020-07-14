@@ -38,11 +38,27 @@ module MOVLE
     # I18n fallbacks: rails will fallback to config.i18n.default_locale translation
     config.i18n.fallbacks = true
 
-    #Load ViSH Editor plugin
-    config.before_configuration do
-      $:.unshift File.expand_path("#{__FILE__}/../../lib/plugins/vish_editor/lib")
-      require 'vish_editor'
-    end
+    # #Plugins
+    # config.available_plugins = []
+    # pluginsPath = "./movle_plugins"
+    # if File.directory?(pluginsPath)
+    #   Dir.glob(pluginsPath+"/*").select {|f| File.directory? f}.each do |f|
+    #     config.available_plugins << f.gsub(pluginsPath+"/","")
+    #   end
+    # end
+
+    # config.enabled_plugins = []
+    # if config.APP_CONFIG['plugins'].is_a? Array
+    #   config.enabled_plugins = (config.APP_CONFIG['plugins'] & config.available_plugins)
+    # end
+
+    # #Load MOVLE plugins
+    # config.before_configuration do
+    #   config.enabled_plugins.each do |eplugin|
+    #     $:.unshift File.expand_path("#{__FILE__}/../../movle_plugins/#{eplugin}/lib")
+    #     require eplugin
+    #   end
+    # end
 
     #Tags settings
     config.tagsSettings = (config.APP_CONFIG['tagsSettings'] || {})
@@ -55,22 +71,7 @@ module MOVLE
     }
     config.tagsSettings = default_tags.merge(config.tagsSettings)
     config.stoptags = File.read("config/stoptags.yml").split(",").map{|s| s.gsub("\n","").gsub("\"","") } rescue []
-
-    #External services settings
-    config.uservoice = (!config.APP_CONFIG['uservoice'].nil? and !config.APP_CONFIG['uservoice']["scriptURL"].nil?)
-    config.ganalytics = (!config.APP_CONFIG['ganalytics'].nil? and !config.APP_CONFIG['ganalytics']["trackingID"].nil?)
-    config.gwebmastertools = (!config.APP_CONFIG['gwebmastertools'].nil? and !config.APP_CONFIG['gwebmastertools']["site-verification"].nil?)
-    config.facebook = (!config.APP_CONFIG['facebook'].nil? and !config.APP_CONFIG['facebook']["appID"].nil? and !config.APP_CONFIG['facebook']["accountID"].nil?)
-    config.twitter = (!config.APP_CONFIG['twitter'].nil? and config.APP_CONFIG['twitter']["enable"]===true)
-    config.gplus = (!config.APP_CONFIG['gplus'].nil? and config.APP_CONFIG['gplus']["enable"]===true)
-
     ActsAsTaggableOn.strict_case_match = true
-
-    config.subtype_classes_mime_types = {
-      :picture => [:jpeg, :gif, :png, :bmp, :xcf],
-      :zipfile=> [:zip, :xzip],
-      :officedoc=> [:odt, :odp, :ods, :doc, :ppt, :xls, :rtf, :pdf]
-    }
 
     #Require core extensions
     Dir[File.join(Rails.root, "lib", "core_ext", "*.rb")].each {|l| require l }
@@ -107,23 +108,19 @@ module MOVLE
         end
     end
 
-    #Thumbnails
-    config.thumbnail_styles = {
-        :default => ["300x300>"],
-        :default_cropped => ["300x300#"]
-    }
-
     config.after_initialize do
-      #Agnostic random
-      if ActiveRecord::Base.connection.adapter_name == "PostgreSQL"
-        config.agnostic_random = "RANDOM()"
-      else
-        #MySQL
-        config.agnostic_random = "RAND()"
-      end
+        if ActiveRecord::Base.connected?
+          #Agnostic random
+          if ActiveRecord::Base.connection.adapter_name == "PostgreSQL"
+            config.agnostic_random = "RANDOM()"
+          else
+            MySQL
+            config.agnostic_random = "RAND()"
+          end
 
-      #Demo user
-      config.demo_user = User.find_by_email("demo@movle.dit.upm.es") if (ActiveRecord::Base.connection.table_exists? "users" and !User.find_by_email("demo@movle.dit.upm.es").nil?)
+          #Demo user
+          config.demo_user = User.find_by_email("demo@movle.dit.upm.es") if (ActiveRecord::Base.connection.table_exists? "users" and !User.find_by_email("demo@movle.dit.upm.es").nil?) 
+        end 
     end
 
     # Version of your assets, change this if you want to expire all your assets

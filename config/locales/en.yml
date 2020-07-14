@@ -18,6 +18,53 @@ en:
               blank: "can't be blank"
             password:
               blank: "can't be blank"
+  dictionary:
+    about: "About"
+    add: "Add"
+    all: "All"
+    and: "and"
+    are_you_sure: "Are you sure?"
+    back: "Back"
+    cancel: "Cancel"
+    clone: "Clone"
+    delete: "Delete"
+    description: "Description"
+    download: "Download"
+    edit: "Edit"
+    email: "Email"
+    errors:
+      blank: "can't be blank"
+      name_blank: "Name can't be blank"
+      page_not_found: "This page does not exists"
+      reserved_word: "is a reserved word"
+      resource_not_found: "Resource not found"
+      too_short: "is too short"
+      unspecified: "has to be specified"
+    file: "File"
+    finish: "Finish"
+    full_screen: "Full screen"
+    language: "Language"
+    login: "Login"
+    next: "Next"
+    none: "None"
+    ok: "Ok"
+    other: "Other"
+    password: "Password"
+    preview: "Preview"
+    relevance: "Relevance"
+    remove: "Remove"
+    save: "Save"
+    search: "Search"
+    submit: "Submit"
+    tags: "Tags"
+    title: "Title"
+    thumbnail: "Avatar"
+    untitled: "Untitled"
+    unknown: "Unknown"
+    unspecified: "Unspecified"
+    update: "Update"
+    username: "Username"
+    register: "Sign up"
   languages:
     bg: "Bulgarian"
     cy: "Welsh"
@@ -36,6 +83,7 @@ en:
     ru: "Russian"
     sr: "Serbian"
     independent: "Language independent"
+    language: "Language"
   login:
     confirmation_instructions: "Didn't receive confirmation instructions?"
     confirmation_instructions_resend: "Resend confirmation instructions"
@@ -61,28 +109,12 @@ en:
     unlock_instructions: "Didn't receive unlock instructions?"
     unlock_instructions_resend: "Resend unlock instructions"
     username_or_email: "Username or Email"
-  presentations:
-    clone:
-      success: "The presentation was cloned succesfully"
-      fail: "You cannot clone this presentation"
-    new: "Create presentation"
-    tabtitle: "Presentations"
   profile:
     title: "%{name}'s profile"
     title_own: "Your profile"
   recaptcha:
     errors:
       verification_failed: 'reCAPTCHA verification failed, please try again'
-  resources:
-    suggestions: "Suggestions"
-    tools:
-      description: "Description"
-      description_no: "No description available"
-      insert: "Insert"
-      share: "Share"
-      download: "Download"
-      text_copy: "Copy to clip"
-      view_metadata: "View metadata"
   i18n:
     transliterate:
       rule:

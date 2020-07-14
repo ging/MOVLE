@@ -1,5 +1,3 @@
-<% active ||= "presentations" %>
-
 <div id="user_profile_info">
 	<p class="title">
 		<% if @isProfileOwner %>
@@ -9,15 +7,3 @@
 		<% end %>
 	</p>
 </div>
-
-<ul class="nav nav-tabs user-nav">
-	<% 
-		tabs = ["scormfiles","presentations","files","games"]
-		tabs += ["game_templates"] if @game_templates and @game_templates.length > 0
-	%>
-	<% tabs.each do |resource| %>
-		<li id="<%=resource%>_tab" class="<%= (active==resource ? "active" : "") %>">
-			<a href="/users/<%=@profile_user.id.to_s + "/" + resource %>"><%= t(resource.underscore + ".tabtitle") %></a>
-		</li>
-	<% end %>
-</ul>

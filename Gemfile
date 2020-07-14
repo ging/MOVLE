@@ -12,25 +12,23 @@ gem 'sass-rails', '6.0.0'
 gem 'uglifier', '4.2.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '5.0.0'
+# UI basics
+gem 'font-awesome-sass', '5.13.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '4.4.0'
 gem 'jquery-ui-rails', '6.0.1'
 
-gem 'acts-as-taggable-on', '6.5.0'
 gem 'devise', '4.7.2'
 gem "devise-encryptable", '0.2.0'
+gem 'cancancan', '3.1.0'
 gem 'warden', '1.2.8'
 gem "recaptcha", '4.3.1', require: "recaptcha/rails"
 gem 'omniauth', '1.9.1'
-gem 'paperclip', '6.1.0'
-gem 'rubyzip', '2.3.0'
-gem 'rmagick', '4.1.2'
-gem 'pdf-reader', '2.4.0'
-gem 'font-awesome-sass', '5.13.0'
-gem 'cancancan', '3.1.0'
+
+gem 'acts-as-taggable-on', '6.5.0'
+
 gem 'exception_notification', '4.4.3'
-gem "autoprefixer-rails"
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

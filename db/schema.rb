@@ -10,62 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_07_17_080042) do
+ActiveRecord::Schema.define(version: 2017_07_17_080009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "documents", id: :serial, force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.text "thumbnail_url"
-    t.text "language"
-    t.string "type"
-    t.integer "owner_id"
-    t.boolean "file_processing"
-    t.boolean "certified", default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string "file_file_name"
-    t.string "file_content_type"
-    t.bigint "file_file_size"
-    t.datetime "file_updated_at"
-    t.string "thumbnail_file_name"
-    t.string "thumbnail_content_type"
-    t.bigint "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
-  end
-
-  create_table "pdfps", id: :serial, force: :cascade do |t|
-    t.integer "owner_id"
-    t.integer "pcount"
-    t.boolean "permanent", default: false
-    t.text "thumbnail_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string "attach_file_name"
-    t.string "attach_content_type"
-    t.bigint "attach_file_size"
-    t.datetime "attach_updated_at"
-  end
-
-  create_table "presentations", id: :serial, force: :cascade do |t|
-    t.integer "owner_id"
-    t.text "json"
-    t.string "title"
-    t.text "description"
-    t.text "thumbnail_url"
-    t.string "language"
-    t.integer "age_min", default: 0
-    t.integer "age_max", default: 0
-    t.boolean "draft", default: false
-    t.datetime "scorm2004_timestamp"
-    t.datetime "scorm12_timestamp"
-    t.boolean "certified", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "tag_array_text", default: ""
-  end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"

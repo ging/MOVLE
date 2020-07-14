@@ -1,19 +1,8 @@
 <div id="logo_wrapper">
-	<a href="/"><img src="/assets/logo.png" class="logo"/></a>
+	<a href="/">Home</a>
 </div>
 
 <div id="buttons_header">
-	<div id="header_plus_wrapper" class="dropdown">
-		<button class="dropdown-toggle primary_button" type="button" data-toggle="dropdown">
-			+
-		</button>
-		<ul class="dropdown-menu dropdown-menu-right">
-			<li><%= link_to(t("documents.new"),new_document_path())%></li>
-			<li><%= link_to(t("presentations.new"),new_presentation_path())%></li>
-			<li><%= link_to(t("games.new"),new_game_path())%></li>
-			<li><%= link_to(t("game_templates.new"),new_game_template_path())%></li>
-		</ul>
-	</div>
 	<div id="header_profile" class="dropdown">
 		<button class="dropdown-toggle primary_button" type="button" data-toggle="dropdown">
 			<%= current_user.name %>
@@ -23,11 +12,6 @@
 			<div id="arrow-up-header-profile"></div>
 			<li><%= link_to(t("header.menu.profile"),user_path(current_user))%></li>
 			<li><%= link_to(t("header.menu.settings"),edit_user_registration_path(current_user))%></li>
-			<li><%= link_to(t("header.menu.scormfiles"),user_path(current_user)+'/scormfiles')%></li>
-			<li><%= link_to(t("header.menu.presentations"),user_path(current_user)+'/presentations')%></li>
-			<li><%= link_to(t("header.menu.games"),user_path(current_user)+'/games')%></li>
-			<li role="separator" class="divider"></li>
-			<li><%= link_to(t("header.menu.demo"),'/demo')%></li>
 			<li role="separator" class="divider"></li>
 			<li><%= link_to(t("header.menu.logout"), destroy_user_session_path, :method => :delete) %></li>
 		</ul>
