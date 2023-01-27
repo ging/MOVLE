@@ -1,0 +1,173 @@
+en:
+  account:
+    cancel: "Cancel my account"
+    edit: "Edit account"
+    update: "Update account"
+  activerecord:
+    errors:
+      messages:
+        confirmation: "doesn't match %{attribute}"
+      models:
+        user:
+          attributes:
+            email:
+              blank: "can't be blank"
+            language:
+              blank: "can't be blank"
+            name:
+              blank: "can't be blank"
+            password:
+              blank: "can't be blank"
+  authorization:
+    errors:
+      generic: "You are not authorized to access this page"
+  data_warning: 
+      content: "This website uses cookies and similar technologies to enable the operation and provision of the services offered on it."
+      button: "Ok"
+  delete: "Delete"
+  dictionary:
+    about: "About"
+    add: "Add"
+    all: "All"
+    and: "and"
+    are_you_sure: "Are you sure?"
+    back: "Back"
+    cancel: "Cancel"
+    clone: "Clone"
+    delete: "Delete"
+    description: "Description"
+    download: "Download"
+    edit: "Edit"
+    email: "Email"
+    errors:
+      blank: "can't be blank"
+      name_blank: "Name can't be blank"
+      page_not_found: "This page does not exists"
+      reserved_word: "is a reserved word"
+      resource_not_found: "Resource not found"
+      too_short: "is too short"
+      unspecified: "has to be specified"
+    file: "File"
+    finish: "Finish"
+    full_screen: "Full screen"
+    language: "Language"
+    login: "Login"
+    next: "Next"
+    none: "None"
+    ok: "Ok"
+    other: "Other"
+    password: "Password"
+    preview: "Preview"
+    relevance: "Relevance"
+    remove: "Remove"
+    save: "Save"
+    search: "Search"
+    submit: "Submit"
+    tags: "Tags"
+    title: "Title"
+    thumbnail: "Avatar"
+    untitled: "Untitled"
+    unknown: "Unknown"
+    unspecified: "Unspecified"
+    update: "Update"
+    username: "Username"
+    register: "Sign up"
+  documents:
+    new: "Upload file"
+    messages:
+      success:
+        create: "File has been successfully uploaded"
+        update: "File has been successfully updated"
+      error:
+        generic_update: "File couldn't be updated"
+    tabtitle: "Files"
+    update: "Update file"
+  files:
+    tabtitle: "Files"
+  frontpage:
+    welcome: "Welcome to MOVLE"
+  footer:
+    contact: "Contact"
+    code: "Source code"
+    manual: "User manual"
+    videos: "Videotutorials"
+  header:
+    menu:
+      profile: "Profile"
+      settings: "Account"
+      logout: "Logout"
+  languages:
+    bg: "Bulgarian"
+    cy: "Welsh"
+    de: "German"
+    en: "English"
+    es: "Spanish"
+    et: "Estonian"
+    fr: "French"
+    it: "Italian"
+    lb: "Luxembourgish"
+    lv: "Latvian"
+    nl: "Dutch"
+    pl: "Polish"
+    pt: "Portuguese"
+    ro: "Romanian"
+    ru: "Russian"
+    sr: "Serbian"
+    independent: "Language independent"
+  login:
+    confirmation_instructions: "Didn't receive confirmation instructions?"
+    confirmation_instructions_resend: "Resend confirmation instructions"
+    confirmation_waiting: "Currently waiting confirmation for"
+    email_description: "Please make sure you enter a valid email address since you will be sent an email including a link to activate your account"
+    message:
+      error:
+        captcha: "There was an error with the recaptcha code below. Please re-enter the code."
+    password: "Password"
+    password_change: "Change your password"
+    password_confirmation: "Password confirmation"
+    password_current_in_settings: "Current password (we need your current password to confirm your changes)"
+    password_forgot: "Forgot your password?"
+    password_in_settings: "Password (leave blank if you don't want to change it)"
+    password_new: "New password"
+    password_new_confirmation: "Confirm new password"
+    password_reset_instructions: "Send me reset password instructions"
+    remember_me: "Remember me"
+    sign_in: "Sign in"
+    sign_in_with: "Sign in with %{provider}"
+    sign_out: "Sign out"
+    sign_up: "Sign up"
+    unlock_instructions: "Didn't receive unlock instructions?"
+    unlock_instructions_resend: "Resend unlock instructions"
+    username_or_email: "Username or Email"
+  presentations:
+    clone:
+      success: "The presentation was cloned successfully"
+      fail: "You cannot clone this presentation"
+    new: "Create presentation"
+    tabtitle: "Presentations"
+  profile:
+    title: "%{name}'s profile"
+    title_own: "Your profile"
+  recaptcha:
+    errors:
+      verification_failed: 'reCAPTCHA verification failed, please try again'
+  resources:
+    suggestions: "Suggestions"
+    tools:
+      description: "Description"
+      description_no: "No description available"
+      insert: "Insert"
+      share: "Share"
+      download: "Download"
+      text_copy: "Copy to clip"
+      view_metadata: "View metadata"
+  i18n:
+    transliterate:
+      rule:
+        ª: "ª"
+        º: "º"
+        ´: "´"
+        ?: "?"
+        ¿: "¿"
+        ¡: "¡"
+        ́ : ""  

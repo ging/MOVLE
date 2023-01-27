@@ -1,0 +1,22 @@
+<% active ||= "presentations" %>
+
+<div id="user_profile_info">
+	<p class="title">
+		<% if @isProfileOwner %>
+			<span><%=t("profile.title_own")%></span>
+		<% else %>
+			<span><%=t("profile.title", :name => @profile_user.name)%></span>
+		<% end %>
+	</p>
+</div>
+
+<ul class="nav nav-tabs user-nav">
+	<% 
+		tabs = ["presentations","files"]
+	%>
+	<% tabs.each do |resource| %>
+		<li id="<%=resource%>_tab" class="<%= (active==resource ? "active" : "") %>">
+			<a href="/users/<%=@profile_user.id.to_s + "/" + resource %>"><%= t(resource.underscore + ".tabtitle") %></a>
+		</li>
+	<% end %>
+</ul>

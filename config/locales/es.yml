@@ -1,0 +1,163 @@
+es:
+  account:
+    cancel: "Cancelar mi cuenta"
+    edit: "Editar cuenta"
+    update: "Actualizar cuenta"
+  activerecord:
+    errors:
+      messages:
+        confirmation: "no coincide con %{attribute}"
+      models:
+        user:
+          attributes:
+            email:
+              blank: "no puede estar en blanco"
+            language:
+              blank: "no puede estar en blanco"
+            name:
+              blank: "no puede estar en blanco"
+            password:
+              blank: "no puede estar en blanco"
+  authorization:
+    errors:
+      generic: "No estás autorizado a acceder a esta página"
+  data_warning: 
+      content: "Este sitio web utiliza cookies y tecnologías similares para permitir el funcionamiento y la prestación de los servicios ofrecidos en el mismo."
+      button: "Entendido"
+  delete: "Borrar"
+  dictionary:
+    about: "About"
+    add: "Añadir"
+    all: "Todos"
+    and: "y"
+    are_you_sure: "¿Estás seguro?"
+    and: "y"
+    back: "Volver"
+    cancel: "Cancelar"
+    clone: "Clonar"
+    delete: "Borrar"
+    description: "Descripción"
+    download: "Descargar"
+    edit: "Editar"
+    email: "Correo electrónico"
+    errors:
+      blank: "no puede estar en blanco"
+      name_blank: "El nombre no puede estar en blanco"
+      page_not_found: "Esta página no existe"
+      reserved_word: "es una palabra reservada"
+      resource_not_found: "Recurso no encontrado"
+      too_short: "es demasiado corto"
+      unspecified: "tiene que ser especificado"
+    file: "Archivo"
+    finish: "Terminar"
+    full_screen: "Pantalla completa"
+    language: "Idioma"
+    login: "Inicia sesión"
+    next: "Siguiente"
+    none: "Ninguno"
+    ok: "Ok"
+    password: "Contraseña"
+    preview: "Previsualizar"
+    relevance: "Relevancia"
+    remove: "Borrar"
+    save: "Salvar"
+    search: "Buscar"
+    submit: "Enviar"
+    tags: "Etiquetas"
+    title: "Título"
+    thumbnail: "Avatar"
+    untitled: "Sin título"
+    unknown: "Desconocido"
+    unspecified: "No especificado"
+    update: "Actualizar"
+    username: "Nombre de usuario"
+    register: "Regístrate"
+  documents:
+    new: "Subir archivo"
+    messages:
+      success:
+        create: "El archivo ha sido subido con éxito"
+        update: "El archivo ha sido actualizado con éxito"
+      error:
+        generic_update: "El archivo no pudo ser actualizado"
+    update: "Actualizar archivo"
+    tabtitle: "Archivos"
+  files:
+    tabtitle: "Archivos"
+  frontpage:
+    welcome: "Bienvenido a MOVLE"
+  footer:
+    contact: "Contacto"
+    code: "Código fuente"
+    manual: "Manual de usuario"
+    videos: "Videotutoriales"
+  header:
+    menu:
+      profile: "Perfil"
+      settings: "Cuenta"
+      logout: "Cerrar sesión"
+  languages:
+    bg: "Búlgaro"
+    cy: "Galés"
+    de: "Alemán"
+    en: "Inglés"
+    es: "Español"
+    et: "Estonio"
+    fr: "Francés"
+    it: "Italiano"
+    lb: "Luxemburgués"
+    lv: "Letón"
+    nl: "Holandés"
+    pl: "Polaco"
+    pt: "Portugués"
+    ro: "Rumano"
+    ru: "Ruso"
+    sr: "Serbio"
+    independent: "Independiente del idioma"
+  login:
+    confirmation_instructions: "¿No has recibido las instrucciones de confirmación?"
+    confirmation_instructions_resend: "Reenviar instrucciones para confirmar cuenta"
+    confirmation_waiting: "Actualmente esperando confirmación para"
+    email_description: "Por favor asegúrese de ingresar una dirección de correo electrónico válida ya que se le enviará un email con un enlace para activar su cuenta"
+    message:
+      error:
+        captcha: "Hubo un error con el código captcha. Por favor, vuelve a introducir el código."
+    password: "Contraseña"
+    password_change: "Cambia tu contraseña"
+    password_confirmation: "Confirmación de contraseña"
+    password_current_in_settings: "Contraseña actual (la contraseña es necesaria para confirmar tus cambios)"
+    password_in_settings: "Contraseña (dejar en blanco si no deseas cambiarla)"
+    password_new: "Nueva contraseña"
+    password_new_confirmation: "Confirmar nueva contraseña"
+    password_forgot: "¿Olvidaste tu contraseña?"
+    password_reset_instructions: "Envíame instrucciones para reestablecer mi contraseña"
+    remember_me: "Recuérdame"
+    sign_in: "Iniciar sesión"
+    sign_in_with: "Iniciar sesión con %{provider}"
+    sign_out: "Cerrar sesión"
+    sign_up: "Regístrate"
+    unlock_instructions: "¿No has recibido las instrucciones para desbloquear la cuenta?"
+    unlock_instructions_resend: "Reenviar instrucciones para desbloquear la cuenta"
+    username_or_email: "Nombre de usuario o Correo electrónico"
+  presentations:
+    clone:
+      success: "La presentación fue clonada con éxito"
+      fail: "No puedes clonar esta presentación"
+    new: "Crear presentacion"
+    tabtitle: "Presentaciones"
+  profile:
+    title: "Perfil de %{name}"
+    title_own: "Tu perfil"
+  recaptcha:
+    errors:
+      verification_failed: 'La verificación reCAPTCHA falló, por favor pruebe otra vez'
+  resources:
+    suggestions: "Sugerencias"
+    tools:
+      description: "Descripción"
+      description_no: "Descripción no disponible"
+      insert: "Insertar"
+      share: "Compartir"
+      download: "Descargar"
+      text_copy: "Copiar al portapapeles"
+      view_metadata: "Ver metadatos"

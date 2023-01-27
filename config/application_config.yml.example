@@ -1,0 +1,48 @@
+development:
+  name: "MOVLE"
+  domain: "localhost:3000"
+  mail:
+    type: "SENDMAIL"
+    main_mail: "movle@example.com"
+    no_reply_mail: "no-reply@example.com"
+    perform_deliveries: false
+    raise_delivery_errors: false
+    enable_starttls_auto: false
+  secret_token: "Place secret token here"
+  # recaptcha: # Get keys from https://www.google.com/recaptcha
+  #  site_key: ""
+  #  secret_key: ""
+
+# More configuration options
+
+# Enable YouTube in the ViSH Editor. Get the API key from https://developers.google.com/youtube/v3/getting-started
+# YouTubeAPIKEY: "secret_key"
+
+# Enable SoundCloud in the ViSH Editor. Get the API key from https://developers.soundcloud.com/
+# soundCloudAPIKEY: "secret_key"
+
+# Enable Europeana in the ViSH Editor. Get the API key from http://labs.europeana.eu/
+# EuropeanaAPIKEY: "secret_key"
+
+# Enable Flickr in the ViSH Editor. No key required.
+# Flickr: "true"
+
+# Enable LRE (Learning Resource Exchange) in the ViSH Editor. No key required.
+# LRE: "true"
+
+# Specify settings for tags
+# tagsSettings:
+#   maxLength: 20
+#   maxTags: 8
+#   triggerKeys: ['enter', 'comma', 'tab', 'space']
+
+#Mailer Configuration for Gmail 
+#  mail:
+#    type: "SMTP"
+#    main_mail: "movle@example.com"
+#    no_reply_mail: "no-reply@example.com"
+#    perform_deliveries: false
+#    raise_delivery_errors: false
+#    gmail_credentials:
+#      username: 'username@gmail.com'
+#      password: 'password' #For accounts with two-factor authentication enabled, an application-specific password must be generated in https://security.google.com/settings/security/apppasswords

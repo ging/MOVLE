@@ -1,0 +1,7 @@
+#Enable exception notification
+Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    email_prefix: '[MOVLE] ',
+    sender_address: %{"MOVLE Error Notifier" <no-reply@movle.es>},
+    exception_recipients: %w{exceptions@example.com}
+  }

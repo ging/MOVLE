@@ -65,3 +65,30 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+#MOVLE specific settings
+config/database.yml
+config/application_config.yml
+config/initializers/exception_notification.rb
+
+# ignore documents folder
+/documents
+/public/system
+
+# scorm zip files
+public/scorm/12/presentations/*
+public/scorm/2004/presentations/*
+public/tmp/scorm/*
+public/tmp/json/*
+public/tmp/qti/*
+public/tmp/moodlequizxml/*
+
+#Code
+public/code/scormfiles/*
+public/code/webapps/*
+
+config/deploy/*
+!config/deploy/example.yaml
+!config/deploy/production.rb
+
+dumps/*
