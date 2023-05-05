@@ -1,8 +1,8 @@
 html, body {
 	height: 100%;
 	font-size: 12px;
-	background-color: #996921;
-	color: white;
+	background-color: #f4f5fa;
+	color: rgba(94,86,105,.68);
 }
 
 #wrapper{
@@ -19,11 +19,17 @@ html, body {
 	width: 100%;
 	padding-bottom: 100px;
 }
+
+#over {
+	z-index: 1;
+}
+
 #header {
 	position: relative;
 	height: 70px;
 	width: 100%;
 }
+
 #footer {
 	position: fixed;
 	bottom: 0px;
@@ -35,7 +41,7 @@ html, body {
 }
 
 a, a:hover, a:active, a:focus {
-	color: white;
+	color: rgba(94,86,105,.68);;
 	outline: none !important;
 }
 

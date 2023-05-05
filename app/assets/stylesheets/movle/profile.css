@@ -1,3 +1,15 @@
+.profile_container {
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	background-color: white;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	width: fit-content;
+	border-radius: 30px;
+	padding: 20px;
+	width: 100%;
+}
+
 div.profile_tab {
 }
 
@@ -8,30 +20,36 @@ div.profile_tab div.row {
 
 #user_profile_info {
 	padding-left: 1px;
-	margin-top: 30px;
 }
 
 #user_profile_info p.title {
-	font-size: 2.2em;
+	font-size: 3.2em;
 	margin-bottom: 40px;
 }
 
 ul.nav-tabs.user-nav li {
-	font-size: 1.5em;
+	font-size: 1.2em;
 	margin-right: 4px;
 }
 
 ul.nav-tabs.user-nav li a, ul.nav-tabs.user-nav li a:hover {
-	color: black;
-	border: 2px solid black;
-	border-bottom: none !important;
+	color: white;
+	border: 2px solid rgb(28, 28, 129);
 	cursor: pointer !important;
+	background-color: rgb(28, 28, 129);
+	border-radius: 30px;
 }
 
+
 ul.nav-tabs.user-nav li:not(.active) a {
-	color: white;
+	color: rgba(65, 61, 71, 0.87);
+	background-color: white;
 }
 
 ul.nav-tabs.user-nav li:not(.active) a:hover {
-	color: black;
+	color: rgba(65, 61, 71, 0.87);
+}
+
+.nav-tabs {
+    border-bottom: none;
 }

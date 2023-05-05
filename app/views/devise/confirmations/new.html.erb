@@ -1,18 +1,26 @@
 <div id="session_form">
-	<h2><%=t("login.confirmation_instructions")%></h2>
+	<h3><%=t("login.confirmation_instructions")%></h3>
 
-	<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-		<%= devise_error_messages! %>
+	<div id="row_form">
 
-		<div class="field">
-			<%= f.label :email %><br />
-			<%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-		</div>
+		<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+			<%= devise_error_messages! %>
 
-		<div class="actions">
-			<%= f.submit t("login.confirmation_instructions_resend") %>
-		</div>
-	<% end %>
+			<div class="field">
+				<%= f.label :email %><br />
+				<%= f.email_field :email, autofocus: true, class: "outlined_input", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+			</div>
+			<div class="end_row margin_end_row">
+				<div class="end_column">
+				<%= render "devise/shared/links" %>
+				</div>
+				<div class="actions">
+					<%= f.submit t("login.confirmation_instructions_resend"), {class: "movle_button resend_button"} %>
+				</div>
+    		</div>
+			
+		<% end %>
 
-	<%= render "devise/shared/links" %>
+	</div>
+
 </div>

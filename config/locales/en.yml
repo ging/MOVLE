@@ -147,7 +147,7 @@ en:
     tabtitle: "Presentations"
   profile:
     title: "%{name}'s profile"
-    title_own: "Your profile"
+    title_own: "Profile"
   recaptcha:
     errors:
       verification_failed: 'reCAPTCHA verification failed, please try again'

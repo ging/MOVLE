@@ -1,28 +1,29 @@
 <div id="new_document_form_wrapper" class="document_form_wrapper">
-	<%= form_for (@document || Document.new), url: {action: "create"}, html: {class: "new_document_form document_form"} do |f| %>
+	<div class="return">
+		<%= link_to t("dictionary.back"), :back, :class=>"back_button" %>
+	</div>
+	<div id="row_form">
+		<%= form_for (@document || Document.new), url: {action: "create"}, html: {class: "new_document_form document_form"} do |f| %>
+			
+			<%= f.hidden_field :owner_id, :value => current_user.id %>
+			
+			<div class="field">
+				<p class="form_legend"><%=t("dictionary.title")%></p>
+				<%= f.text_field :title, :maxlength => 60, :size => 70, :class => "outlined_input title" %>
+			</div>
+			<div class="field">
+				<p class="form_legend"><%=t("dictionary.description")%></p>
+				<%= f.text_area :description, :cols => 73, :rows => 4, :maxlength => 280, :resize => "none" %>
+			</div>
+			<div class="field">
+				<p class="form_legend"><%=t("dictionary.file")%></p>
+				<%= f.file_field :file, :class => "outlined_input_file" %>
+			</div>
 		
-		<%= f.hidden_field :owner_id, :value => current_user.id %>
+			<div class="actions">
+				<%= f.submit(t("documents.new"), {class: "movle_button upload_button"}) %>
+			</div>
 
-		<div class="field">
-			<p class="form_legend"><%=t("dictionary.file")%></p>
-			<%= f.file_field :file %>
-		</div>
-
-		<div class="field">
-			<p class="form_legend"><%=t("dictionary.title")%></p>
-			<%= f.text_field :title, :maxlength => 60, :size => 70 %>
-		</div>
-		<div class="field">
-			<p class="form_legend"><%=t("dictionary.description")%></p>
-			<%= f.text_area :description, :cols => 73, :rows => 4, :maxlength => 280, :resize => "none" %>
-		</div>
-	
-		<div class="actions">
-			<%= f.submit(t("documents.new"), {class: "movle_button"}) %>
-		</div>
-
-		<br/>
-	    <%= link_to t("dictionary.back"), :back, :class=>"back_button" %>
-	    
-	<% end %>
+		<% end %>
+	</div>
 </div>

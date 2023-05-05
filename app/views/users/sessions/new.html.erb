@@ -1,27 +1,31 @@
 <div id="session_form">
   <h2><%=t("devise.sessions.new")%></h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <p class="form_legend"><%=t("dictionary.email")%></p>
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <p class="form_legend"><%=t("login.password")%></p>
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <% if devise_mapping.rememberable? -%>
+  <div id="row_form">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.check_box :remember_me %> <%=t("login.remember_me")%>
+        <p class="form_legend"><%=t("dictionary.email")%></p>
+        <%= f.email_field :email, autofocus: true, id: "user_email", class: "outlined_input" %>
       </div>
-    <% end -%>
 
-    <div class="actions">
-      <%= f.submit(t("devise.sessions.new"), {class: "movle_button sign_in_button"}) %>
-    </div>
-  <% end %>
+      <div class="field">
+        <p class="form_legend"><%=t("login.password")%></p>
+        <%= f.password_field :password, autocomplete: "off", id: "user_password", class: "outlined_input" %>
+      </div>
 
-  <%= render "devise/shared/links" %>
+      <% if devise_mapping.rememberable? -%>
+        <div class="end_row">
+          <div class="field">
+            <%= f.check_box :remember_me %> <%=t("login.remember_me")%>
+          </div>
+          <div class="actions margin_end_row">
+          <%= f.submit(t("devise.sessions.new"), {class: "movle_button sign_in_button"}) %>
+          </div>
+        </div>
+      <% end -%>
+      <div class="end_column">
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
+  </div>
 </div>

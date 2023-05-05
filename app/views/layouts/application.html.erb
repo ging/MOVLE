@@ -15,7 +15,9 @@
       <%= render "layouts/header" %>
     </header>
     <div id="container">
-      <%= render '/layouts/notifications' %>
+      <div id="over">
+        <%= render '/layouts/notifications' %>
+      </div>
       <%= yield %>
     </div>
     <footer id="footer">

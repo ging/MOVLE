@@ -1,3 +1,16 @@
+div.document_form_wrapper {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	background-color: white;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	margin: auto;
+	width: fit-content;
+	border-radius: 30px;
+	padding: 20px;
+	margin-top: 60px;
+}
+
 div.document_form_wrapper input, div.document_form_wrapper textarea {
 	color: black;
 	background-color: white;
@@ -6,10 +19,10 @@ div.document_form_wrapper input, div.document_form_wrapper textarea {
 	font-size: 1.1em;
 }
 
-div.document_form_wrapper input[type="file"] {
+div.document_form_wrapper input[type="file"], div.document_form_wrapper input[type="file"]:focus {
 	padding: 20px;
 	font-size: 1.3em;
-	border: 2px solid black;
+	border: 2px dashed #ccc;
 }
 
 div.document_form_wrapper input[type="submit"] {
@@ -23,7 +36,7 @@ div.document_form_wrapper div.field {
 div.document_form_wrapper p.form_legend {
 	color: white;
 	font-size: 1.5em;
-	margin-bottom: 1px;
+	margin-bottom: 10px;
 }
 
 div.document_form_wrapper p.form_legend_checkbox {
@@ -46,4 +59,55 @@ div.document_form_wrapper select {
 	border: 1px solid black;
 	padding: 5px;
 	font-size: 1.2em; 
+}
+
+.return {
+	background-color: gray;
+	width: min-content;
+	border-radius: 30px;
+	padding: 5px 10px;
+	margin-bottom: 10px;
+}
+
+div.return a {
+	color: white;
+}
+
+div.document_form_wrapper #row_form {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+  
+div.document_form_wrapper form {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+div.document_form_wrapper div.field {
+	margin: 20px 0px 20px 0px;
+}
+  
+div.document_form_wrapper form p {
+	font-size: 1.3rem;
+	font-weight: bold;
+	color: rgba(94,86,105,.68) !important;
+}
+
+div.document_form_wrapper div.field .title{
+	width: 50%;
+	padding-top: 0px;
+}
+
+#document_description, #document_description:focus-visible {
+	border: 2px solid #ccc !important;
+}
+
+.upload_button {
+    font-size: 1em !important;
+    background-color: #63e38a !important;
+    color: white !important;
+	padding: 5px 10px !important;
+	float: right;
 }

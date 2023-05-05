@@ -5046,6 +5046,8 @@ a.thumbnail.active {
 .alert-dismissable,
 .alert-dismissible {
   padding-right: 35px;
+  width: 30%;
+  float: right;
 }
 .alert-dismissable .close,
 .alert-dismissible .close {

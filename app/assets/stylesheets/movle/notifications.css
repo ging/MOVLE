@@ -3,11 +3,9 @@
 }
 
 div.alert-success{
-	background-image: -webkit-linear-gradient(left, #000000 0%, #4e4e4e 100%);
-	border-color: white;
-	color: white;
-	border-size: 3px;
 	font-size: 1.2em;
+	width: 30%;
+	float: right;
 }
 
 div.alert-danger {
@@ -15,4 +13,6 @@ div.alert-danger {
 	font-size: 1.2em;
 	border-size: 3px;
 	border-color: black;
+	width: 30%;
+	float: right;
 }

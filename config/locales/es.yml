@@ -116,7 +116,7 @@ es:
     independent: "Independiente del idioma"
   login:
     confirmation_instructions: "¿No has recibido las instrucciones de confirmación?"
-    confirmation_instructions_resend: "Reenviar instrucciones para confirmar cuenta"
+    confirmation_instructions_resend: "Reenviar instrucciones"
     confirmation_waiting: "Actualmente esperando confirmación para"
     email_description: "Por favor asegúrese de ingresar una dirección de correo electrónico válida ya que se le enviará un email con un enlace para activar su cuenta"
     message:
@@ -125,12 +125,12 @@ es:
     password: "Contraseña"
     password_change: "Cambia tu contraseña"
     password_confirmation: "Confirmación de contraseña"
-    password_current_in_settings: "Contraseña actual (la contraseña es necesaria para confirmar tus cambios)"
+    password_current_in_settings: "Contraseña actual (necesaria para confirmar)"
     password_in_settings: "Contraseña (dejar en blanco si no deseas cambiarla)"
     password_new: "Nueva contraseña"
     password_new_confirmation: "Confirmar nueva contraseña"
     password_forgot: "¿Olvidaste tu contraseña?"
-    password_reset_instructions: "Envíame instrucciones para reestablecer mi contraseña"
+    password_reset_instructions: "Reestablecer contraseña"
     remember_me: "Recuérdame"
     sign_in: "Iniciar sesión"
     sign_in_with: "Iniciar sesión con %{provider}"
@@ -147,7 +147,7 @@ es:
     tabtitle: "Presentaciones"
   profile:
     title: "Perfil de %{name}"
-    title_own: "Tu perfil"
+    title_own: "Perfil"
   recaptcha:
     errors:
       verification_failed: 'La verificación reCAPTCHA falló, por favor pruebe otra vez'

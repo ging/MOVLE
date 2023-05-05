@@ -1,11 +1,10 @@
 div.movle_button, input.movle_button, button.movle_button {
-    border: 2px solid black;
-    padding: 4px 10px;
+    padding: 4px 14px;
     text-align: center;
-    font-size: 1.3em;
-    border-radius: 3px;
-    background-color: white;
-    color: black;
+    font-size: 1.2em;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    color: white;
     -webkit-transition: all ease 0.8s;
     -moz-transition: all ease 0.8s;
     -o-transition: all ease 0.8s;
@@ -13,7 +12,7 @@ div.movle_button, input.movle_button, button.movle_button {
 }
 
 div.movle_button a, button.movle_button a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -21,13 +20,19 @@ div.movle_button a span.glyphicon, button.movle_button a span.glyphicon{
     margin-right: 5px;
 }
 
+div.movle_button_header {
+    background-color: #63e38a;
+}
+
+div.movle_secondary_button_header {
+    background-color: rgb(58, 132, 241);
+}
+
 div.movle_secondary_button, input.movle_secondary_button {
-    border: 2px solid white;
-    padding: 4px 10px;
+    padding: 4px 12px;
     text-align: center;
-    font-size: 1.3em;
-    border-radius: 3px;
-    background-color: black;
+    font-size: 1.2em;
+    border-radius: 30px;
     color: white;
 }
 
@@ -37,7 +42,7 @@ div.movle_button, div.movle_secondary_button {
 }
 
 div.movle_button a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -49,3 +54,23 @@ div.movle_secondary_button a {
 .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
     outline: none;
 }
+
+.sign_up_button {
+    float: right;
+    font-size: 1em !important;
+    border: 1px solid black !important;
+}
+
+.resend_button, .sign_in_button, .forgot_password_button, .update_account_button {
+    font-size: 1em !important;
+    background-color: #63e38a;
+    color: white !important;
+}
+
+.cancel_account_button {
+    font-size: 1em !important;
+    background-color: rgb(255, 80, 80);
+    color: white !important;
+}
+
+

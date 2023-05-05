@@ -1,22 +1,43 @@
 div#session_form {
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: auto;
+  width: fit-content;
+  border-radius: 30px;
+  padding: 20px;
 }
 
 div#session_form h2 {
-  margin: 0px;
   font-size: 2.2rem;
+  margin: 30px auto 20px;
+}
+
+div#session_form h3 {
+  margin: 30px auto 40px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+div#session_form #row_form {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 div#session_form form {
-  margin: 20px 0px 25px 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 div#session_form div.field {
-  margin: 10px 0px 10px 0px;
+  margin: 20px 0px 20px 0px;
 }
 
 div#session_form form p {
-  margin: 0px 0px 1px 0px;
   font-size: 1.3rem;
   font-weight: bold;
 }
@@ -40,10 +61,6 @@ div#session_form input[type='text'], div#session_form [type='email'], div#sessio
   font-size: 1.2rem;
 }
 
-div#session_form .sign_up_button, div#session_form .forgot_password_button, div#session_form .update_account_button{
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
 
 div#session_form div.field div.select2-container{
   width: 400px;
@@ -61,7 +78,6 @@ div#session_form p.remember_me input[type='checkbox'] {
 }
     
 div#session_form input[type='submit'] {
-  min-width: 400px;
   font-size: 1.4rem;
 }
 
@@ -98,4 +114,51 @@ div#cancel_account_wrapper p.cancel_account_description {
 
 div#cancel_account_wrapper form {
   margin-top: 6px;
+}
+
+.outlined_input {
+  background-color: transparent;
+  padding-left: 40px;
+  border: none;
+  border-bottom: 2px solid gray;
+}
+
+.outlined_input:focus {
+  outline: none;
+}
+
+.end_row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.align_center {
+  align-items: center;
+}
+
+.end_row_p {
+  font-weight: 200 !important;
+  font-size: 1em !important;
+  margin: 0px;
+}
+
+.end_column{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.margin_end_row {
+  margin-top: 20px;
+}
+
+.return {
+  background-color: gray;
+  width: min-content;
+  border-radius: 30px;
+  padding: 5px 10px;
+}
+
+div.return a {
+  color: white;
 }

@@ -1,11 +1,40 @@
 <div id="movle_logo_wrapper">
-	<a href="/"><p class="logo">MOVLE</p></a>
+	<a href="/">
+		<p class="logo">MOVLE</p>
+	</a>
 </div>
 <div id="buttons_header">
-	<div class="movle_secondary_button" id="register_wrapper">
+	<div class="dropdown header_dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img src="/assets/flags/flag_<%=I18n.locale.to_s%>"/>
+			<div>
+				<span class="languagetext"><%=t("dictionary.language")%></span>
+				<span class="caret"></span>
+			</div>
+		</button>
+		<ul class="dropdown-menu">
+			<form id="change_locale" action="/change_locale" action="GET">
+				<input name="locale" value="" type="hidden"/>
+				<% I18n.available_locales.map(&:to_s).each do |lanCode| %>
+					<li value="<%=lanCode%>"><img src="/assets/flags/flag_<%=lanCode%>"/><%=t("languages." + lanCode)%></li>
+				<% end %>
+			</form>
+		</ul>
+  	</div>
+	<div class="movle_secondary_button movle_secondary_button_header" id="register_wrapper">
 		<a href="/users/sign_up"><%=t("dictionary.register")%></a>
 	</div>
-	<div class="movle_button" id="login_wrapper">
+	<div class="movle_button movle_button_header" id="login_wrapper">
 		<a href="/users/sign_in"><%=t("dictionary.login")%></a>
 	</div>
 </div>
+
+
+<script>
+  $(document).ready(function(){
+    $("#change_locale li").click(function(e){
+      $("#change_locale input[name]").attr("value",$(this).attr("value"));
+      $("#change_locale").submit();
+    });
+  });
+</script>
