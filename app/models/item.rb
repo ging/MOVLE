@@ -20,6 +20,10 @@ module Item
 		end
 	end
 
+	def item_id
+		self.class.to_s + "-" + self.id.to_s
+	end
+
 	def owner_validation
 		return errors[:base] << "Item without author" if self.owner_id.blank? or User.find_by_id(self.owner_id).nil?
 		true
