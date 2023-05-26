@@ -1,0 +1,17 @@
+<div id="home">
+	<p>MOVLE homepage</p>
+	
+	<%@latestItems.each do |item| %>
+		<%= render :partial => 'resources/box', :locals  => { :resource => item } %>
+	<% end %>
+
+	<p>Recommended items</p>
+	<%@recommendedItems.each do |item| %>
+		<%= render :partial => 'resources/box', :locals  => { :resource => item } %>
+	<% end %>
+
+	<p>Popular items</p>
+	<%@popularItems.each do |item| %>
+		<%= render :partial => 'resources/box', :locals  => { :resource => item } %>
+	<% end %>
+</div>

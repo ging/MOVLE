@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root "home#frontpage"
 
+  #Home
+  match '/home' => 'home#home', via: [:get]
+
   #Users
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
