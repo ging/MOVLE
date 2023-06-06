@@ -5,11 +5,10 @@
   <div class="dropup footer_dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="languagetext"><%=t("dictionary.about")%></span>
-      <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
       <% if Movle::Application.config.APP_CONFIG["mail"] and Movle::Application.config.APP_CONFIG["mail"]["main_mail"] %>
-      <li><a href=<%="mailto:" + Movle::Application.config.APP_CONFIG["mail"]["main_mail"]%>><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span><%=t("footer.contact")%></span></a></li>
+        <li><a href=<%="mailto:" + Movle::Application.config.APP_CONFIG["mail"]["main_mail"]%>><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span><%=t("footer.contact")%></span></a></li>
       <% end %>
       <li><a href="https://github.com/ging/MOVLE" target="_blank"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span><%=t("footer.code")%></a></li>
     </ul>

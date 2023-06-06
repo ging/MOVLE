@@ -8,6 +8,7 @@ div#session_form {
   width: fit-content;
   border-radius: 30px;
   padding: 20px;
+  margin-top: 30px;
 }
 
 div#session_form h2 {

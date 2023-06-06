@@ -36,8 +36,9 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	float: right;
 	height: 100%;
+	float: right;
+	justify-content: flex-end;
 }
 
 #buttons_header div {
@@ -128,4 +129,18 @@
 	background: none;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-shadow: none;
+}
+
+#search input {
+	width: 50%;
+}
+
+#search span {
+	background: transparent;
+	cursor: pointer;
+}
+
+#search i {
+	color: white;
+	font-size: 19px;
 }

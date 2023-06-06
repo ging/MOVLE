@@ -2,10 +2,17 @@ div.rsitem_box {
 	display: block;
 	height: 99px;
 	width: 100%;
-	border: 2px solid black;
-	border-radius: 5px;
+	border: 1px solid black;
+	border-radius: 20px;
 	background: white;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
+	transform: scale(var(--escala, 1));
+	transition: transform 0.2s;
+}
+
+div.rsitem_box:hover{
+	--escala: 1.08;
+	cursor:pointer;
 }
 
 div.rsitem_box div.rsitem_icon {
@@ -21,6 +28,7 @@ div.rsitem_box div.rsitem_icon {
 	height: 40px;
 	text-align: center;
 	z-index: 2;
+	display: none;
 }
 
 div.rsitem_box div.rsitem_icon a {
@@ -50,6 +58,7 @@ div.rsitem_box div.rsitem_thumbnail_img {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	border-radius: 20px 0px 0px 20px;
 }
 
 div.rsitem_box div.rsitem_title {
@@ -59,13 +68,13 @@ div.rsitem_box div.rsitem_title {
 	height: 100%;
 	color: black;
 	z-index: 1;
-	padding: 8px;
+	padding: 10px 10px;
 	overflow: hidden;
 }
 
 div.rsitem_box div.rsitem_title a {
 	color: black;
-	font-size: 1.2em;
+	font-size: 1.5em;
 	text-decoration: none;
 }
 

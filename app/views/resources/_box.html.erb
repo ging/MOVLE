@@ -1,5 +1,23 @@
 <% resourceClassName = resource.class.name.underscore %>
-
-<div>
-	<%= resource.title %>
+<% generated_id= "item-" + resource.item_id %>
+<div class="item_box">
+  <div class="item_thumbnail <%="item_thumbnail_draft_wrapper" if resource.draft %>">
+    <%= link_to(presentation_url(resource)) do %>
+      <div class="item_thumbnail_img" id="<%=generated_id%>"></div>
+      <% if resource.draft %>
+        <div class="item_thubmnail_draft">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          Draft
+        </div>
+      <% end %>
+    <%end%>
+  </div>
+  <div class="item_title">
+    <%= link_to(presentation_url(resource)) do %>
+      <p class="title"><%= resource.title %></p>
+    <%end%>
+  </div>
 </div>
+<script>
+  document.getElementById("<%=generated_id%>").style.backgroundImage = "url('<%=resource.thumbnail_url%>')";
+</script>

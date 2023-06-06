@@ -1,40 +1,56 @@
 <div id="movle_logo_wrapper">
-	<a href="/">
-		<p class="logo">MOVLE</p>
-	</a>
+  <a href="/">
+    <p class="logo">MOVLE</p>
+  </a>
 </div>
 <div id="buttons_header">
-	<div class="dropdown header_dropdown">
-		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<img src="/assets/flags/flag_<%=I18n.locale.to_s%>"/>
-			<div>
-				<span class="languagetext"><%=t("dictionary.language")%></span>
-				<span class="caret"></span>
-			</div>
-		</button>
-		<ul class="dropdown-menu">
-			<form id="change_locale" action="/change_locale" action="GET">
-				<input name="locale" value="" type="hidden"/>
-				<% I18n.available_locales.map(&:to_s).each do |lanCode| %>
-					<li value="<%=lanCode%>"><img src="/assets/flags/flag_<%=lanCode%>"/><%=t("languages." + lanCode)%></li>
-				<% end %>
-			</form>
-		</ul>
-  	</div>
-	<div class="movle_secondary_button movle_secondary_button_header" id="register_wrapper">
-		<a href="/users/sign_up"><%=t("dictionary.register")%></a>
-	</div>
-	<div class="movle_button movle_button_header" id="login_wrapper">
-		<a href="/users/sign_in"><%=t("dictionary.login")%></a>
-	</div>
+  <div class="d-flex align-center input-group rounded" id="search" style="width: 40%">
+    <input type="search" class="form-control rounded" id="search_input" placeholder="Search" aria-label="Search" aria-describedby="search-addon" style="display: none"/>
+    <span class="input-group-text border-0" id="search-addon">
+      <i class="fas fa-search"></i>
+    </span>
+  </div>
+  <div class="dropdown header_dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <img src="/assets/flags/flag_<%=I18n.locale.to_s%>"/>
+      <div>
+        <span class="languagetext"><%=t("dictionary.language")%></span>
+      </div>
+    </button>
+    <ul class="dropdown-menu">
+      <form id="change_locale" action="/change_locale" action="GET">
+        <input name="locale" value="" type="hidden"/>
+        <% I18n.available_locales.map(&:to_s).each do |lanCode| %>
+          <li value="<%=lanCode%>"><img src="/assets/flags/flag_<%=lanCode%>"/><%=t("languages." + lanCode)%></li>
+        <% end %>
+      </form>
+    </ul>
+  </div>
+  <div class="movle_secondary_button movle_secondary_button_header" id="register_wrapper">
+    <a href="/users/sign_up"><%=t("dictionary.register")%></a>
+  </div>
+  <div class="movle_button movle_button_header" id="login_wrapper">
+    <a href="/users/sign_in"><%=t("dictionary.login")%></a>
+  </div>
 </div>
-
-
 <script>
   $(document).ready(function(){
     $("#change_locale li").click(function(e){
       $("#change_locale input[name]").attr("value",$(this).attr("value"));
       $("#change_locale").submit();
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var searchIcon = document.getElementById("search-addon");
+    var searchInput = document.getElementById("search_input");
+
+    searchIcon.addEventListener("click", function() {
+      if (searchInput.style.display === "none") {
+        searchInput.style.display = "flex";
+      } else {
+        searchInput.style.display = "none";
+      }
     });
   });
 </script>

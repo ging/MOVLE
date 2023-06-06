@@ -145,6 +145,10 @@ en:
       fail: "You cannot clone this presentation"
     new: "Create presentation"
     tabtitle: "Presentations"
+  home:
+    tabtitle: "Home"
+  catalog:
+    tabtitle: "Catalog"
   profile:
     title: "%{name}'s profile"
     title_own: "Profile"

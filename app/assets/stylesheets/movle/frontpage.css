@@ -3,3 +3,30 @@ div.frontpage {
 	display: flex;
 	justify-content: center;
 }
+
+.frontpage_nav {
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	background-color: white;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	width: fit-content;
+	border-radius: 30px;
+	padding: 20px;
+	width: 100%;
+}
+
+div.frontpage_anonymous {
+	margin-top: -18px;
+	height: 400px;
+	width: 100%;
+	background-image: url('background.png');
+	background-size:cover;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+
+.home {
+	margin: 0;
+	padding-top: 40px;
+}

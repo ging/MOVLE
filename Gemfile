@@ -49,4 +49,8 @@ group :development do
   gem 'capistrano-bundler', '2.0.1', require: false
   gem 'ed25519', '1.3.0'
   gem 'bcrypt_pbkdf', '1.1.0'
+  gem 'guard'
+  gem 'guard-rails-assets'
 end
+
+gem 'htmlbeautifier'

@@ -37,7 +37,7 @@ div.movle_secondary_button, input.movle_secondary_button {
 }
 
 div.movle_button, div.movle_secondary_button {
-    min-width: 100px;
+    min-width: 110px;
     margin: 0px 5px 0px 5px;
 }
 

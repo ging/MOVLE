@@ -145,6 +145,10 @@ es:
       fail: "No puedes clonar esta presentación"
     new: "Crear presentacion"
     tabtitle: "Presentaciones"
+  home:
+    tabtitle: "Inicio"
+  catalog:
+    tabtitle: "Catálogos"
   profile:
     title: "Perfil de %{name}"
     title_own: "Perfil"
