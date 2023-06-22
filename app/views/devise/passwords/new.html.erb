@@ -1,24 +1,20 @@
 <div id="session_form">
-	<h3 class="password_forgot_title"><%=t("login.password_forgot")%></h3>
-
-	<div id="row_form">
-		<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-			<%= devise_error_messages! %>
-
-			<p class="form_legend"><%=t("dictionary.email")%></p>
-			<%= f.email_field :email, :autofocus => true, class: "outlined_input" %>
-
-			
-			<div class="end_row margin_end_row">
-				<div class="end_column">
-					<%= render "devise/shared/links" %>
-				</div>
-				<div class="actions">
-					<%= f.submit t("login.password_reset_instructions"), :class => 'movle_button forgot_password_button' %>
-				</div>
-		  	</div>
-		<% end -%>
-		
-	</div>
-
+  <h3 class="password_forgot_title"><%=t("login.password_forgot")%></h3>
+  <div id="row_form">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="field">
+        <p class="form_legend"><%=t("dictionary.email")%></p>
+        <%= f.email_field :email, :autofocus => true, class: "outlined_input" %>
+      </div>
+      <div class="end_row margin_end_row">
+        <div class="end_column">
+          <%= render "devise/shared/links" %>
+        </div>
+        <div class="actions">
+          <%= f.submit t("login.password_reset_instructions"), :class => 'movle_button forgot_password_button' %>
+        </div>
+      </div>
+    <% end -%>
+  </div>
 </div>

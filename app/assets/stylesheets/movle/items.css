@@ -1,7 +1,7 @@
 div.item_box {
 	width: 224px;
-	height: 270px;
-	border: 1px solid grey;
+	height: 310px;
+	border: 2px solid #d6d4d4;
 	border-radius: 30px;
 	display: flex;
     margin: 15px 20px 15px 10px;
@@ -10,10 +10,11 @@ div.item_box {
 	justify-content: space-around;
 	transform: scale(var(--escala, 1));
 	transition: transform 0.2s;
+	background-color: white;
 }
 
 div.item_box:hover{
-	--escala: 1.2;
+	--escala: 1.15;
 	cursor:pointer;
 }
 
@@ -31,6 +32,7 @@ div.item_box div.item_icon {
 	height: 40px;
 	text-align: center;
 	z-index: 2;
+	display: none;
 }
 
 div.item_box div.item_icon a {
@@ -115,10 +117,23 @@ div.item_box div.item_thubmnail_new {
 	color: white;
 	font-size: 8em;
 	text-align: center;
-	height: 100%;
-	padding-top: 15%;
+	height: 156px;
+	width: 84%;
+	z-index: 1;
+    display: flex;
+    justify-content: center;
+	margin: 0px 16px;
+	border-radius: 30px;
+	margin-top: 25px;
 }
 
 div.item_box div.item_thubmnail_new a {
 	text-decoration: none;
+}
+
+.add_new {
+	color: black;
+	font-size: 1.5em;
+	text-decoration: none;
+	text-align: center;
 }

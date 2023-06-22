@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 	skip_authorization_check :only => [:frontpage,:home]
 
 	def frontpage
+		@popularItems = Presentation.public_items.sample(12)
 		if user_signed_in?
 			redirect_to "/home"
 		else

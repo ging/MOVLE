@@ -1,14 +1,19 @@
-<div class="d-flex frontpage">
-  <div class="container">
-    <div class="row">
-      <div class="col-4">
-        Primera de tres columnas
-      </div>
-      <div class="col-4">
-        Segunda de tres columnas
-      </div>
-      <div class="col-4">
-        Tercera de tres columnas
+<div class="frontpage">
+  <div class="movle_image">
+    <div class="images">
+      <%= image_tag('background.png',:class => "photo"); %>
+      <%= image_tag('movle2.png',:class => "logo_image"); %>
+    </div>
+    <div class="divider_row">
+      <hr class="hr-style">
+      <i class="bi bi-arrow-down-circle-fill"></i>
+      <hr class="hr-style">
+    </div>
+    <div id="items">
+      <div class="card flex-row flex-wrap">
+        <%@popularItems.each do |item| %>
+          <%= render :partial => 'resources/box', :locals  => { :resource => item } %>
+        <% end %>
       </div>
     </div>
   </div>

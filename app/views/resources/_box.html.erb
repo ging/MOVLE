@@ -17,6 +17,20 @@
       <p class="title"><%= resource.title %></p>
     <%end%>
   </div>
+  <div class="item_user">
+    <!--  <p class="title">resource.author.name</p> -->
+    <div class="d-flex by_date justify-content-between">
+      <span class="author">
+        <span class="by"><%=t('by')%></span>
+        <a href="/users/1">ruben</a>
+      </span>
+      <span><%= resource.created_at.strftime('%d/%m/%Y') %></span>
+    </div>
+    <div class="d-flex views_after_by">
+      <i class="bi bi-eye-fill"></i>
+      <p><%=rand(1..40)%> visualizaciones</p>
+    </div>
+  </div>
 </div>
 <script>
   document.getElementById("<%=generated_id%>").style.backgroundImage = "url('<%=resource.thumbnail_url%>')";

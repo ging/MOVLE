@@ -26,7 +26,7 @@ es:
       button: "Entendido"
   delete: "Borrar"
   dictionary:
-    about: "About"
+    about: "Información"
     add: "Añadir"
     all: "Todos"
     and: "y"
@@ -165,3 +165,4 @@ es:
       download: "Descargar"
       text_copy: "Copiar al portapapeles"
       view_metadata: "Ver metadatos"
+  by: "por"

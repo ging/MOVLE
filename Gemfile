@@ -35,6 +35,7 @@ gem "net-http", '0.2.0'
 gem "nokogiri", '1.13.4'
 gem 'rexml', '3.2.5'
 gem 'net-ssh', '7.0.0.beta1'
+gem 'momentjs-rails'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -52,5 +53,3 @@ group :development do
   gem 'guard'
   gem 'guard-rails-assets'
 end
-
-gem 'htmlbeautifier'

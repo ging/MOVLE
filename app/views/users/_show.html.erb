@@ -1,8 +1,7 @@
 <% tab ||= "scormfiles" %>
-
-<%= render "users/profile_header", :active => tab %>
-<div class="profile_container" style="margin-top: 20px; padding-bottom: 40px">	 
-    <div class="profile_tab_wrapper">
-        <%= render "users/show_" + tab %>
-    </div>
+<div id="profile">
+  <%= render "users/profile_header", :active => tab %>
+  <div class="profile_tab_wrapper">
+    <%= render "users/show_" + tab %>
+  </div>
 </div>

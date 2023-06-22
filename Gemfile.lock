@@ -142,7 +142,6 @@ GEM
       rake
     hashery (2.1.2)
     hashie (5.0.0)
-    htmlbeautifier (1.4.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.4.0)
@@ -177,6 +176,8 @@ GEM
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     minitest (5.17.0)
+    momentjs-rails (2.29.4.1)
+      railties (>= 3.1)
     msgpack (1.6.0)
     nenv (0.3.0)
     net-http (0.2.0)
@@ -323,10 +324,10 @@ DEPENDENCIES
   font-awesome-sass (= 6.1.1)
   guard
   guard-rails-assets
-  htmlbeautifier
   jquery-rails (= 4.4.0)
   jquery-ui-rails (= 6.0.1)
   kt-paperclip (= 7.1.1)
+  momentjs-rails
   net-http (= 0.2.0)
   net-ssh (= 7.0.0.beta1)
   nokogiri (= 1.13.4)

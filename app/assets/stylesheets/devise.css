@@ -5,21 +5,23 @@ div#session_form {
   background-color: white;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: auto;
-  width: fit-content;
+  width: 35%;
   border-radius: 30px;
-  padding: 20px;
-  margin-top: 30px;
+  padding: 70px;
+  margin-top: 45px;
 }
 
 div#session_form h2 {
-  font-size: 2.2rem;
-  margin: 30px auto 20px;
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin: 10px auto 20px;
 }
 
 div#session_form h3 {
-  margin: 30px auto 40px;
-  font-size: 1.3rem;
+  margin: 10px auto 20px;
+  font-size: 2.2rem;
   font-weight: bold;
+  text-align: center;
 }
 
 div#session_form #row_form {
@@ -39,7 +41,7 @@ div#session_form div.field {
 }
 
 div#session_form form p {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   font-weight: bold;
 }
 
@@ -58,7 +60,7 @@ div#session_form input, div#session_form select {
 
 div#session_form input[type='text'], div#session_form [type='email'], div#session_form [type='password'], div#session_form select.account_language {
   padding: 5px;
-  min-width: 400px;
+  min-width: 480px;
   font-size: 1.2rem;
 }
 
@@ -149,8 +151,12 @@ div#cancel_account_wrapper form {
   flex-direction: column;
 }
 
+.end_column a { 
+  font-size: 17px;
+}
+
 .margin_end_row {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .return {

@@ -15,4 +15,5 @@
 //= require jquery-ui
 //= require bootstrap
 //= require polyfills.js
+//= require moment
 //= require_tree .

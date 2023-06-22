@@ -1,16 +1,23 @@
+#profile {
+	padding: 60px 120px 0px 120px;
+}
+
 .profile_container {
 	display: flex;
 	justify-content: flex-start;
 	flex-direction: column;
 	background-color: white;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-	width: fit-content;
 	border-radius: 30px;
-	padding: 20px;
+	margin: 0px 10px 30px 10px;
+	padding: 30px;
 	width: 100%;
 }
 
-div.profile_tab {
+.profile_tab_wrapper{
+	display: flex;
+	justify-content: center;
+	margin-left: 40px;
 }
 
 div.profile_tab div.row {
@@ -22,13 +29,28 @@ div.profile_tab div.row {
 	padding-left: 1px;
 }
 
-#user_profile_info p.title {
+#user_profile_info div.title {
 	font-size: 3.2em;
 	margin-bottom: 40px;
+	display: flex;
+	align-items: center;
 }
 
+#user_profile_info div.title i {
+	margin-right: 5px;
+}
+
+#user_profile_info div.title span {
+	margin-right: 25px;
+}
+
+#user_profile_info div.title a {
+	color: white;
+}
+
+
 ul.nav-tabs.user-nav li {
-	font-size: 1.2em;
+	font-size: 1.6em;
 	margin-right: 4px;
 }
 

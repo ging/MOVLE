@@ -16,12 +16,19 @@ html, body {
 	padding-bottom: 100px;
 }
 
+@keyframes ocultar {
+	0% { opacity: 1; }
+	100% { opacity: 0; display: none; }
+}
+
 #over {
 	position: absolute;
 	z-index: 1;
 	width: 100%;
     padding-right: 25px;
+	animation: ocultar 5s forwards;
 }
+
 
 #header {
 	position: relative;
@@ -63,7 +70,7 @@ a.back_button {
 }
 
 #home {
-	padding: 30px 60px 0px 60px;
+	padding: 60px 160px 0px 160px;
 }
 
 
@@ -73,12 +80,21 @@ a.back_button {
 }
 
 #home .card {
-	padding: 20px;
-	margin-top: 15px;
-	margin-bottom: 30px;
+	margin-bottom: 60px;
 	border-radius: 20px;
+	border: none;
+	background-color: transparent;
 }
 
-.card-hover {
-	
+.hr-home_style {
+	flex: 1;
+	height: 3px;
+	background-color: grey;
+	margin-top: 10px;
+	border-radius: 30px;
+}
+
+#checkbox-remember {
+	margin: 0px 3px 3px 0px;
+	font-size: 18px !important;
 }

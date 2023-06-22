@@ -1,6 +1,6 @@
 #resource_wrapper {
 	width: 100%;
-	padding: 0px 60px;
+	padding: 60px 130px 0px 130px;
 }
 
 #resource_wrapper div.resource_content_wrapper {
@@ -30,21 +30,29 @@
 
 #resource_wrapper ul.tooltab li a {
 	font-size: 1.2em;
-	color: white;
+	color: black;
 }
 
 #resource_wrapper ul.tooltab li.active a {
 	border: 2px solid black;
 	color: black;
+	border-radius: 30px;
+}
+
+#resource_wrapper ul.tooltab li:not(.active) a {
+	color: rgba(65, 61, 71, 0.87);
+	background-color: white;
+	border-radius: 30px;
 }
 
 #resource_wrapper ul.tooltab li a:hover {
 	color: black;
+	border-radius: 30px;
 }
 
 #resource_wrapper .resource_tools_wrapper div.tab-content {
-	margin-top: 15px;
-	font-size: 1.2em;
+	margin-top: 30px;
+	font-size: 1.4em;
 }
 
 #resource_wrapper div.tab-pane > div.input-group, #textarea_embed, #input_with_sharedURL {
@@ -66,6 +74,8 @@
 
 #resource_wrapper div.tooltab_buttons button {
 	margin-top: 5px;
+	color: black;
+	border: 1px solid black;
 }
 
 #resource_wrapper button.movle_button span.glyphicon-trash {
@@ -79,6 +89,7 @@
 }
 #resource_wrapper p.resource_metadata_link_wrapper a {
 	text-decoration: none;
+	display: none;
 }
 
 @media (max-width: 992px){
@@ -94,4 +105,17 @@
 	#resource_wrapper div.resource_tools_wrapper ul.tooltab li a {
 		background: white;
 	}
+}
+
+.by_date {
+	padding: 0px 20px;
+}
+
+.views_after_by {
+	float: right;
+	margin-top: 10px;
+}
+
+.views_after_by p {
+	padding: 0px 20px 0px 5px !important;
 }

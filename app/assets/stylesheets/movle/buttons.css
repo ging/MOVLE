@@ -57,20 +57,44 @@ div.movle_secondary_button a {
 
 .sign_up_button {
     float: right;
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     border: 1px solid black !important;
+    margin-right: 20px;
 }
 
 .resend_button, .sign_in_button, .forgot_password_button, .update_account_button {
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     background-color: #63e38a;
     color: white !important;
 }
 
 .cancel_account_button {
-    font-size: 1em !important;
+    font-size: 1.5em !important;
     background-color: rgb(255, 80, 80);
     color: white !important;
 }
 
+.forgot_password_button {
+    margin-right: 20px;
+}
+
+.edit_profile {
+    font-size: 15px;
+    background-color: rgba(94,86,105,.68);
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+#return_button {
+    font-size: 15px;
+    background-color: rgba(94,86,105,.68);
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: white;
+    width: 22%;
+}
+
+#return_button i {
+    margin-right: 5px;
+}
 
