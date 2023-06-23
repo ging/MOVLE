@@ -17,7 +17,7 @@ Rails.application.configure do
       ActionMailer::Base.delivery_method = :sendmail
       ActionMailer::Base.sendmail_settings = {
         :location => "/usr/sbin/sendmail",
-        :arguments => "-i -t"
+        :arguments => ["-i", "-t"]
       }
     else
       ActionMailer::Base.delivery_method = :smtp
