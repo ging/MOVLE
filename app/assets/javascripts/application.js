@@ -15,6 +15,5 @@
 //= require jquery-ui
 //= require bootstrap
 //= require polyfills.js
-//= require search
 //= require query-string
 //= require_tree .
