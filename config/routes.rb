@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   match '/home' => 'home#home', via: [:get]
 
   #Search
-  match '/search' => 'search#search', via: [:get]
+  match '/search', to: 'search#index', via: [:get], as: 'search'
 
   #Users
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks" }

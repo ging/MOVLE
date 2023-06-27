@@ -5,11 +5,31 @@ div#session_form {
   background-color: white;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: auto;
-  width: 35%;
   border-radius: 30px;
   padding: 70px;
   margin-top: 45px;
+  width: 90%;
 }
+
+@media (min-width: 1700px) {
+  div#session_form {
+    width: 35%;
+  }
+}
+
+@media (min-width: 1400px) {
+  div#session_form {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1000px) {
+  div#session_form {
+    width: 60%;
+  }
+}
+
+
 
 div#session_form h2 {
   font-size: 2.8rem;

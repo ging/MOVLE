@@ -119,3 +119,7 @@
 .views_after_by p {
 	padding: 0px 20px 0px 5px !important;
 }
+
+.item_user > .item_title {
+	margin-bottom: 20px !important;
+}

@@ -17,12 +17,12 @@
 .profile_tab_wrapper{
 	display: flex;
 	justify-content: center;
-	margin-left: 40px;
 }
 
-div.profile_tab div.row {
-	margin-top: 15px;
-    margin-left: 3px;
+div.profile_tab {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #user_profile_info {

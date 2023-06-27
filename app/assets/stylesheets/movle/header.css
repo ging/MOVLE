@@ -131,13 +131,16 @@
 	text-shadow: none;
 }
 
-#search input {
-	width: 50%;
+#search, #search form {
+	display: flex !important;
+	align-items: center;
 }
 
-#search span {
+#search button {
 	background: transparent;
 	cursor: pointer;
+	border: none;
+	box-shadow: none
 }
 
 #search i {

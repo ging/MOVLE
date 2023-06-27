@@ -1,0 +1,44 @@
+<% if @type == 'presentation' %>
+  <div class="presentation_items">
+    <% @results.each do |result| %>
+      <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
+    <% end %>
+  </div>
+<% elsif @type == 'user'%>
+  <% @results.each do |result| %>
+    <%= link_to "/users/" + result.id.to_s do %>
+      <div class="item_box">
+        <%= image_tag('profile.png',:class => "user_photo"); %>
+        <div class="user_items">
+          <div class="name_email">
+            <i class="bi bi-person-fill"></i><%= result.name %>
+          </div>
+        </div>
+        <div class="user_email">
+          <%= result.email %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <div id="final_results" class="items">
+    <% @results2.each do |result| %>
+      <%= link_to "/users/" + result.id.to_s do %>
+        <div class="item_box">
+          <%= image_tag('profile.png',:class => "user_photo"); %>
+          <div class="user_items">
+            <div class="name_email">
+              <i class="bi bi-person-fill"></i><%= result.name %>
+            </div>
+          </div>
+          <div class="user_email">
+            <%= result.email %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <% @results.each do |result| %>
+      <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
+    <% end %>
+  </div>
+<% end%>

@@ -18,10 +18,19 @@
           <div class="item_thumbnail_img" id="<%=generated_id%>"></div>
         <%end%>
       </div>
-      <div class="item_title">
-        <%= link_to(polymorphic_url(resource)) do %>
-          <p class="title"><%= resource.title %></p>
-        <%end%>
+      <div class="item_user">
+        <div class="item_title">
+          <%= link_to(polymorphic_url(resource)) do %>
+            <p class="title"><%= resource.title %></p>
+          <%end%>
+        </div>
+        <div class="d-flex by_date justify-content-between">
+          <span class="author">
+            <span class="by"><%=t('by')%></span>
+            <%= link_to User.find_by(id: resource.owner_id)&.name, user_path(resource.owner_id) if resource.owner_id.present? %>
+          </span>
+          <span><%= resource.created_at.strftime('%d/%m/%Y') %></span>
+        </div>
       </div>
     </div>
     <% if resource.respond_to?("thumbnail_url") %>

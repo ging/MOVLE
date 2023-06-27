@@ -15,9 +15,9 @@ class HomeController < ApplicationController
 
 	def home
 		publicItems = Presentation.public_items
-		@latestItems = publicItems.sample(5)
-		@recommendedItems = publicItems.where("id NOT in (?)",@latestItems.map{|r| r.id}).sample(5)
-		@popularItems = publicItems.where("id NOT in (?)",@latestItems.map{|r| r.id} + @recommendedItems.map{|r| r.id}).sample(5)
+		@latestItems = publicItems.sample(6)
+		@recommendedItems = publicItems.where("id NOT in (?)",@latestItems.map{|r| r.id}).sample(6)
+		@popularItems = publicItems.where("id NOT in (?)",@latestItems.map{|r| r.id} + @recommendedItems.map{|r| r.id}).sample(6)
 
 		respond_to do |format|
 			format.html { render layout: "application" }

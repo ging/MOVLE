@@ -1,10 +1,8 @@
 <div id="presentations" class="tab-pane in active profile_tab">
-  <div class="row">
-    <% if @isProfileOwner %>
-      <%= render 'resources/resource_new', :new_resource_path => new_presentation_path %>
-    <%end%>
-    <% @presentations.each do |presentation| %>
-      <%= render 'presentations/presentation', :presentation => presentation %>
-    <% end %>
-  </div>
+  <% if @isProfileOwner %>
+    <%= render 'resources/resource_new', :new_resource_path => new_presentation_path %>
+  <%end%>
+  <% @presentations.each do |presentation| %>
+    <%= render 'presentations/presentation', :presentation => presentation %>
+  <% end %>
 </div>

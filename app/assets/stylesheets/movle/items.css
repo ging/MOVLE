@@ -137,3 +137,7 @@ div.item_box div.item_thubmnail_new a {
 	text-decoration: none;
 	text-align: center;
 }
+
+.item_user {
+	color: black;
+}

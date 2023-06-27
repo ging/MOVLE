@@ -18,11 +18,10 @@
     <%end%>
   </div>
   <div class="item_user">
-    <!--  <p class="title">resource.author.name</p> -->
     <div class="d-flex by_date justify-content-between">
       <span class="author">
         <span class="by"><%=t('by')%></span>
-        <a href="/users/1">ruben</a>
+        <%= link_to User.find_by(id: resource.owner_id)&.name, user_path(resource.owner_id) if resource.owner_id.present? %>
       </span>
       <span><%= resource.created_at.strftime('%d/%m/%Y') %></span>
     </div>

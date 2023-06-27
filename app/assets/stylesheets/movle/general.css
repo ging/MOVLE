@@ -70,7 +70,19 @@ a.back_button {
 }
 
 #home {
-	padding: 60px 160px 0px 160px;
+	padding: 60px 150px 0px 150px;
+}
+
+@media (max-width: 640px) {
+    #home {
+		padding: 60px 100px 0px 100px;
+	}
+}
+
+@media (max-width: 450px) {
+    #home {
+		padding: 60px 70px 0px 70px;
+	}
 }
 
 

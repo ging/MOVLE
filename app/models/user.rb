@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
-	:recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
+	:recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
 	include Taggable
 	acts_as_ordered_taggable
