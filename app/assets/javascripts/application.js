@@ -16,4 +16,5 @@
 //= require bootstrap
 //= require polyfills.js
 //= require query-string
+//= require search.js
 //= require_tree .

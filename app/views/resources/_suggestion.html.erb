@@ -8,21 +8,20 @@
         <img src="/assets/glyphicons-37-file.png"/>
       <% end %>
     </a>
-  </div>
-  <div class="rsitem_thumbnail">
+    </div>
+    <div class="rsitem_thumbnail">
       <%= link_to(profile[:url]) do %>
         <div class="rsitem_thumbnail_img" id="<%=generated_id%>"></div>
       <% end %>
+    </div>
+    <div class="rsitem_title">
+      <%= link_to(profile[:url]) do %>
+        <p class="title"><%= profile[:title] %></p>
+      <% end %>
+    </div>
   </div>
-  <div class="rsitem_title">
-    <%= link_to(profile[:url]) do %>
-      <p class="title"><%= profile[:title] %></p>
-    <% end %>
-  </div>
-</div>
-
-<% unless profile[:thumbnail_url].blank? %>
-	<script>
-	  document.getElementById("<%=generated_id%>").style.backgroundImage = "url('<%=profile[:thumbnail_url]%>')";
-	</script>
-<% end %>
+  <% unless profile[:thumbnail_url].blank? %>
+    <script>
+      document.getElementById("<%=generated_id%>").style.backgroundImage = "url('<%=profile[:thumbnail_url]%>')";
+    </script>
+  <% end %>

@@ -39,6 +39,7 @@ es:
     description: "Descripción"
     download: "Descargar"
     edit: "Editar"
+    search: "Buscar"
     email: "Correo electrónico"
     errors:
       blank: "no puede estar en blanco"
@@ -145,8 +146,25 @@ es:
       fail: "No puedes clonar esta presentación"
     new: "Crear presentacion"
     tabtitle: "Presentaciones"
+    views: "visualizaciones"
   home:
     tabtitle: "Inicio"
+    recent_presentations: "Presentaciones recientes"
+    recommend_presentations: "Presentaciones recomendadas"
+    popular_presentations: "Presentaciones populares"
+  search:
+    search: 'Buscador'
+    filter_by: 'Filtrar por'
+    type: 'Tipo'
+    users: 'Usuarios'
+    presentations: 'Presentaciones'
+    tags: 'Etiquetas'
+    search_results: 'Resultados de la busqueda'
+    order_by: 'Ordenar por'
+    recent_date: 'Fecha reciente'
+    oldest_date: 'Fecha antigua'
+    popularity: 'Popularidad'
+    delete_ordenation: 'Eliminar ordenación'
   catalog:
     tabtitle: "Catálogos"
   profile:
@@ -157,6 +175,7 @@ es:
       verification_failed: 'La verificación reCAPTCHA falló, por favor pruebe otra vez'
   resources:
     suggestions: "Sugerencias"
+    add_new: "Añadir nuevo"
     tools:
       description: "Descripción"
       description_no: "Descripción no disponible"

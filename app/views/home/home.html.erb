@@ -1,19 +1,19 @@
 <div id="home">
-  <span class="title-span">Presentaciones recientes</span>
+  <span class="title-span"><%=t("home.recent_presentations")%></span>
   <hr class="hr-home_style">
   <div class="card flex-row flex-wrap">
     <%@latestItems.each do |item| %>
       <%= render :partial => 'resources/box', :locals  => { :resource => item } %>
     <% end %>
   </div>
-  <span class="title-span">Presentaciones recomendadas</span>
+  <span class="title-span"><%=t("home.recommend_presentations")%></span>
   <hr class="hr-home_style">
   <div class="card flex-row flex-wrap">
     <%@recommendedItems.each do |item| %>
       <%= render :partial => 'resources/box', :locals  => { :resource => item } %>
     <% end %>
   </div>
-  <span class="title-span">Presentaciones populares</span>
+  <span class="title-span"><%=t("home.popular_presentations")%></span>
   <hr class="hr-home_style">
   <div class="card flex-row flex-wrap">
     <%@popularItems.each do |item| %>

@@ -58,8 +58,8 @@ div.movle_secondary_button a {
 .sign_up_button {
     float: right;
     font-size: 1.5em !important;
-    border: 1px solid black !important;
-    margin-right: 20px;
+    background-color: rgb(58, 132, 241);
+    color: white !important;
 }
 
 .resend_button, .sign_in_button, .forgot_password_button, .update_account_button {
@@ -72,10 +72,6 @@ div.movle_secondary_button a {
     font-size: 1.5em !important;
     background-color: rgb(255, 80, 80);
     color: white !important;
-}
-
-.forgot_password_button {
-    margin-right: 20px;
 }
 
 .edit_profile {

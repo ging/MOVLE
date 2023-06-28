@@ -6,7 +6,7 @@
       <% if @isProfileOwner %>
         <span><%= current_user.name%></span>
         <%= link_to(edit_user_registration_path(current_user), class: "edit_profile") do %>
-          <i class="bi bi-pen-fill"></i> editar
+          <i class="bi bi-pen-fill"></i> <%=t('edit')%>
         <% end %>
       <% else %>
         <span><%=t("profile.title", :name => @profile_user.name)%></span>

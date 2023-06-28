@@ -38,6 +38,7 @@ en:
     description: "Description"
     download: "Download"
     edit: "Edit"
+    search: "Search"
     email: "Email"
     errors:
       blank: "can't be blank"
@@ -145,8 +146,25 @@ en:
       fail: "You cannot clone this presentation"
     new: "Create presentation"
     tabtitle: "Presentations"
+    views: "views"
   home:
     tabtitle: "Home"
+    recent_presentations: "Recent presentations"
+    recommend_presentations: "Recommend presentations"
+    popular_presentations: "Popular presentations"
+  search:
+    search: 'Search'
+    filter_by: 'Filter by'
+    type: 'Type'
+    users: 'Users'
+    presentations: 'Presentations'
+    tags: 'Tags'
+    search_results: 'Search Results'
+    order_by: 'Order by'
+    recent_date: 'Recent Date'
+    oldest_date: 'Oldest Date'
+    popularity: 'Popularity'
+    delete_ordenation: 'Delete ordenation'
   catalog:
     tabtitle: "Catalog"
   profile:
@@ -157,6 +175,7 @@ en:
       verification_failed: 'reCAPTCHA verification failed, please try again'
   resources:
     suggestions: "Suggestions"
+    add_new: "Add new"
     tools:
       description: "Description"
       description_no: "No description available"

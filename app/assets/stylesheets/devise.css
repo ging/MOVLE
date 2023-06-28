@@ -8,24 +8,36 @@ div#session_form {
   border-radius: 30px;
   padding: 70px;
   margin-top: 45px;
-  width: 90%;
+  width: 35%;
 }
 
-@media (min-width: 1700px) {
-  div#session_form {
-    width: 35%;
-  }
-}
-
-@media (min-width: 1400px) {
+@media (max-width: 1650px) {
   div#session_form {
     width: 40%;
   }
 }
 
-@media (min-width: 1000px) {
+@media (max-width: 1400px) {
+  div#session_form {
+    width: 50%;
+  }
+}
+
+@media (max-width: 1175px) {
   div#session_form {
     width: 60%;
+  }
+}
+
+@media (max-width: 950px) {
+  div#session_form {
+    width: 75%;
+  }
+}
+
+@media (max-width: 750px) {
+  div#session_form {
+    width: 90%;
   }
 }
 

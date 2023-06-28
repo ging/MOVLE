@@ -1,25 +1,50 @@
 <section id="search_view">
   <div class="search_display">
     <div id="search-sidebar">
-      <h1><i id="folder" class="bi bi-folder"></i>Buscador</h1>
+      <h1><i id="folder" class="bi bi-folder"></i><%=t('search.search')%></h1>
       <div class="filter_set">
-        <i id="arrow" class="bi bi-caret-down-fill"></i>
-        <span class="filter_title">Filtrar por<span class="filter_title_bold">tipo</span></span>
+        <i id="arrow" class="bi bi-caret-up-fill"></i>
+        <span class="filter_title"><%=t('search.filter_by')%><span class="filter_title_bold"><%=t('search.type')%></span></span>
         <hr class="separator">
         <div id="filters">
           <ul class="opened_filter">
-            <div id="ul-users">Usuarios</div>
+            <div id="ul-users"><%=t('search.users')%></div>
           </ul>
           <ul class="opened_filter">
-            <div id="ul-presentations">Presentaciones</div>
+            <div id="ul-presentations"><%=t('search.presentations')%></div>
           </ul>
+        </div>
+      </div>
+      <div class="filter_set">
+        <i id="arrow2" class="bi bi-caret-down-fill"></i>
+        <span class="filter_title"><%=t('search.filter_by')%><span class="filter_title_bold"><%=t('search.tags')%></span></span>
+        <hr class="separator">
+        <div id="filters2" class="filters-open">
+          <% @tags_array.uniq.sort.each do |tag| %>
+            <% generated_id= "ul-" + tag %>
+            <ul class="opened_filter">
+              <div class="filter-tags"id="<%= generated_id %>"><%= tag %></div>
+            </ul>
+          <% end %>
         </div>
       </div>
     </div>
     <div id="search_results">
+      <div class="dropdown dropdown_order_by">
+        <div class="delete_ordenation">
+          <span><%=t('search.delete_ordenation')%></span>
+        </div>
+        <button class="btn btn_order_by dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%=t('search.order_by')%>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" id="recent_date"><%=t('search.recent_date')%></a>
+          <a class="dropdown-item" id="oldest_date"><%=t('search.oldest_date')%></a>
+        </div>
+      </div>
       <% if @query.present? %>
         <div id="text_search">
-          <h3>Resultados de la búsqueda: <%= @query %></h3>
+          <h3><%=t('search.search_results')%><%= @query %></h3>
           <i class="bi bi-x-circle-fill" id="btnDeleteSearch"></i>
         </div>
       <% end %>
@@ -31,16 +56,19 @@
         </div>
       <% elsif @type == 'user' %>
         <% @results.each do |result| %>
-          <div id="final_results" class="user_items">
-            <div class="name_email">
-              <i class="bi bi-person-fill"></i><%= result.name %>, <%= result.email %>
+          <%= link_to "/users/" + result.id.to_s do %>
+            <div class="item_box">
+              <%= image_tag('profile.png',:class => "user_photo"); %>
+              <div class="user_items">
+                <div class="name_email">
+                  <i class="bi bi-person-fill"></i><%= result.name %>
+                </div>
+              </div>
+              <div class="user_email">
+                <%= result.email %>
+              </div>
             </div>
-            <div class="link_profile">
-              <%= link_to 'Ir al perfil', "/users/" + result.id.to_s %>
-              <i class="bi bi-arrow-right-circle-fill"></i>
-            </div>
-          </div>
-          <hr class="separator">
+          <% end %>
         <% end %>
       <% else %>
         <div id="final_results" class="items">
@@ -70,7 +98,7 @@
 <script>
   $(document).ready(function() {
     // Función para realizar la petición AJAX
-    function hacerPeticion(url) {
+    function ajaxRequest(url) {
       console.log(url)
       $.ajax({
         url: url,
@@ -88,74 +116,160 @@
     }
 
     var arrowIcon = document.getElementById("arrow");
+    var arrowIcon2 = document.getElementById("arrow2");
     var filtersDiv = document.getElementById("filters");
+    var filtersDiv2 = document.getElementById("filters2");
     var isVisible = true;
     var users = document.getElementById("ul-users");
     var presentations = document.getElementById("ul-presentations");
     var textSearch = document.getElementById("text_search");
     var url = window.location.href; // Obtener la URL actual
+
+    if (url.includes('sort_by')) {
+      var newUrl = url.split((url.includes('&') ? '&sort_by' : '?sort_by'))[0];
+      ajaxRequest(newUrl);
+      window.history.pushState("", "", newUrl);
+    } else {
+      randomOrder();
+    }
+
     if (url.includes('type=user')) {
       users.classList.add("active-filter");
     } else if (url.includes('type=presentation')) {
       presentations.classList.add("active-filter");
     }
 
+    if (url.includes('tags')) {
+      filtersDiv2.classList.remove("filters-open");
+    }
+
+    var arrayTags = '<%= @tags %>'.split(',')
+    console.log(arrayTags);
+    for (var i = 0; i < arrayTags.length; i++) {
+      var tag = arrayTags[i];
+      console.log(tag)
+      if (tag !== '' && url.includes(tag)) {
+        document.getElementById("ul-" + tag).classList.add("active-filter");
+      }
+    }
+
+    function deleteSelections () {
+      var ulElements = filtersDiv2.querySelectorAll('ul');
+      console.log(ulElements)
+
+      ulElements.forEach(function(ul) {
+        ul.querySelectorAll('div').forEach(function(div) {
+          div.classList.remove('active-filter');
+        });
+      });
+    }
+
+    $('.delete_ordenation').click(function() {
+      var newUrl = url.split('&');
+      console.log(newUrl)
+      if (newUrl.lenght > 2) {
+        for (var i = 0; i < newUrl.length; i++) {
+          if (!newUrl[i].includes('sort')) {
+            newUrlWithoutSort += newUrl[i];
+          }
+        }
+        newUrl = newUrlWithoutSort
+        console.log(newUrlWithoutSort)
+      } else {
+        newUrl = newUrl[0]
+      }
+      ajaxRequest(newUrl);
+      window.history.pushState("", "", newUrl);
+    });
+
+    $('#recent_date').click(function() {
+      var url = window.location.href; // Obtener la URL actual
+      var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
+
+      // Construir la nueva URL con la consulta añadida
+      var newUrl = url + separador + 'sort_by=recent_date';
+      ajaxRequest(newUrl);
+      window.history.pushState("", "", newUrl);
+    })
+
+    $('#oldest_date').click(function() {
+      var url = window.location.href; // Obtener la URL actual
+      var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
+
+      // Construir la nueva URL con la consulta añadida
+      var newUrl = url + separador + 'sort_by=oldest_date';
+      ajaxRequest(newUrl);
+      window.history.pushState("", "", newUrl);
+    })
+
 
     // Botón para añadir una consulta a la URL
     $('#ul-users').click(function() {
       var url = window.location.href; // Obtener la URL actual
       if (url.includes('type=user')) {
-        // Remover la consulta de la URL
-        var nuevaUrl = url.replace(url.includes('&') ? '&type=user' : '?type=user', '');
+        // Eliminar la consulta de la URL
+        var newUrl = url.replace(url.includes('&') ? '&type=user' : '?type=user', '');
 
         // Realizar la petición AJAX
-        hacerPeticion(nuevaUrl);
-        window.history.pushState("", "", nuevaUrl);
+        ajaxRequest(newUrl);
+        window.history.pushState("", "", newUrl);
       } else if (url.includes('type=presentation')) {
-        // Remover la consulta de la URL
-        var nuevaUrl = url.replace('type=presentation', 'type=user');
+        if (url.includes('tags')) {
+          var urlToSplit = url.replace('type=presentation', 'type=user');
+          var newUrl = urlToSplit.split(url.includes('&') ? '&tags' : '?tags')[0]
+          deleteSelections()
+        } else {
+        // Eliminar la consulta de la URL
+        var newUrl = url.replace('type=presentation', 'type=user');
+        }
 
         // Realizar la petición AJAX
-        hacerPeticion(nuevaUrl);
-        window.history.pushState("", "", nuevaUrl);
+        ajaxRequest(newUrl);
+        window.history.pushState("", "", newUrl);
       } else {
         var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
 
         // Construir la nueva URL con la consulta añadida
-        var nuevaUrl = url + separador + 'type=user';
+        var newUrl = url + separador + 'type=user';
 
         // Realizar la petición AJAX
-        hacerPeticion(nuevaUrl);
-        window.history.pushState("", "", nuevaUrl);
+        ajaxRequest(newUrl);
+        window.history.pushState("", "", newUrl);
       }
     });
 
     $('#ul-presentations').click(function() {
       var url = window.location.href; // Obtener la URL actual
       if (url.includes('type=presentation')) {
-        // Remover la consulta de la URL
-        var nuevaUrl = url.replace(url.includes('&') ? '&type=presentation' : '?type=presentation', '');
+        if (url.includes('tags')) {
+          var urlToSplit = url.replace(url.includes('&') ? '&type=presentation' : '?type=presentation', '');
+          var newUrl = urlToSplit.split(url.includes('&') ? '&tags' : '?tags')[0]
+          deleteSelections()
+        } else {
+        // Eliminar la consulta de la URL
+          var newUrl = url.replace(url.includes('&') ? '&type=presentation' : '?type=presentation', '');
+        }
 
         // Realizar la petición AJAX
-        hacerPeticion(nuevaUrl);
-        window.history.pushState("", "", nuevaUrl);
+        ajaxRequest(newUrl);
+        window.history.pushState("", "", newUrl);
       } else if (url.includes('type=user')) {
-        // Remover la consulta de la URL
-        var nuevaUrl = url.replace('type=user', 'type=presentation');
+        // Eliminar la consulta de la URL
+        var newUrl = url.replace('type=user', 'type=presentation');
 
         // Realizar la petición AJAX
-        hacerPeticion(nuevaUrl);
-        window.history.pushState("", "", nuevaUrl);
+        ajaxRequest(newUrl);
+        window.history.pushState("", "", newUrl);
       } else {
         var url = window.location.href; // Obtener la URL actual
         var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
 
         // Construir la nueva URL con la consulta añadida
-        var nuevaUrl = url + separador + 'type=presentation';
+        var newUrl = url + separador + 'type=presentation';
 
         // Realizar la petición AJAX
-        hacerPeticion(nuevaUrl);
-        window.history.pushState("", "", nuevaUrl);
+        ajaxRequest(newUrl);
+        window.history.pushState("", "", newUrl);
       }
     });
 
@@ -164,15 +278,53 @@
       var query = '<%= j @query %>';
       var url = window.location.href; // Obtener la URL actual
 
-      // Remover la consulta de la URL
-      var nuevaUrl = url.replace('&q=' + query, '').replace('?q=' + query, '');
+      // Eliminar la consulta de la URL
+      var newUrl = url.replace('&q=' + query, '').replace('?q=' + query, '');
 
       // Realizar la petición AJAX
-      hacerPeticion(nuevaUrl);
-      window.history.pushState("", "", nuevaUrl);
+      ajaxRequest(newUrl);
+      window.history.pushState("", "", newUrl);
       textSearch.style.display = "none";
     });
 
+    $('.filter-tags').click(function() {
+      var id = $(this).attr('id').substring(3);
+      var url = window.location.href; // Obtener la URL actual
+      if (url.includes(id)) {
+        document.getElementById("ul-" + id).classList.remove("active-filter");
+        if (url.includes('%2C'+ id)) {
+          var newUrl = url.replace('%2C' + id, '');
+        } else {
+          if (url.includes('%2C')) {
+            var newUrl = url.replace('&tags=' + id + '%2C', '&tags=')
+          } else {
+            var newUrl = url.replace('&tags=' + id, '')
+          }
+        }
+      } else {
+        document.getElementById("ul-" + id).classList.add("active-filter");
+        presentations.classList.add("active-filter");
+        var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
+        // Construir la nueva URL con la consulta añadida
+        if (url.includes('type=presentation')) {
+          if (url.includes('tags')) {
+            var newUrl = url + '%2C' + id;
+          } else {
+            var newUrl = url + separador + 'tags=' + id;
+          }
+        } else {
+          if (url.includes('type=user')) {
+            users.classList.remove("active-filter");
+            var newUrl = url.replace('type=user', 'type=presentation') + '&tags=' + id;
+          } else {
+            var newUrl = url + separador + 'type=presentation' + '&tags=' + id;
+          }
+        }
+      }
+      // Realizar la petición AJAX
+      ajaxRequest(newUrl);
+      window.history.pushState("", "", newUrl);
+    });
 
     arrowIcon.addEventListener("click", function() {
     if (arrowIcon.classList.contains("bi-caret-down-fill")) {
@@ -184,6 +336,20 @@
       arrowIcon.classList.remove("bi-caret-up-fill");
       arrowIcon.classList.add("bi-caret-down-fill");
       filtersDiv.classList.add("filters-open");
+      isVisible = true;
+    }
+    });
+
+    arrowIcon2.addEventListener("click", function() {
+    if (arrowIcon2.classList.contains("bi-caret-down-fill")) {
+      arrowIcon2.classList.remove("bi-caret-down-fill");
+      arrowIcon2.classList.add("bi-caret-up-fill");
+      filtersDiv2.classList.remove("filters-open");
+      isVisible = false;
+    } else {
+      arrowIcon2.classList.remove("bi-caret-up-fill");
+      arrowIcon2.classList.add("bi-caret-down-fill");
+      filtersDiv2.classList.add("filters-open");
       isVisible = true;
     }
     });

@@ -42,3 +42,11 @@
     <% end %>
   </div>
 <% end%>
+<script>
+  $(document).ready(function() {
+    var url = window.location.href; // Obtener la URL actual
+    if (!url.includes('sort_by')) {
+      randomOrder();
+    }
+  });
+</script>
