@@ -9,6 +9,7 @@ class AddPresentations < ActiveRecord::Migration[4.2]
 			t.string   :language
 			t.integer  :age_min, :default => 0
 			t.integer  :age_max, :default => 0
+			t.integer  :views, :default => 0
 			t.boolean  :draft, :default => false
 			t.datetime :scorm2004_timestamp
 			t.datetime :scorm12_timestamp

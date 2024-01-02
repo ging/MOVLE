@@ -96,6 +96,12 @@ div#session_form input[type='text'], div#session_form [type='email'], div#sessio
   font-size: 1.2rem;
 }
 
+@media (max-width: 680px) {
+	div#session_form input[type='text'], div#session_form [type='email'], div#session_form [type='password'], div#session_form select.account_language {
+		min-width: 280px;
+	  }
+}
+
 
 div#session_form div.field div.select2-container{
   width: 400px;
@@ -158,6 +164,10 @@ div#cancel_account_wrapper form {
   border-bottom: 2px solid gray;
 }
 
+.iframe{
+  width: 100%;
+}
+
 .outlined_input:focus {
   outline: none;
 }
@@ -200,4 +210,8 @@ div#cancel_account_wrapper form {
 
 div.return a {
   color: white;
+}
+
+.field .description {
+  width: 100%;
 }

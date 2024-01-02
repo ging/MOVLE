@@ -13,13 +13,16 @@
           <ul class="opened_filter">
             <div id="ul-presentations"><%=t('search.presentations')%></div>
           </ul>
+          <ul class="opened_filter">
+            <div id="ul-links"><%=t('search.links')%></div>
+          </ul>
         </div>
       </div>
       <div class="filter_set">
         <i id="arrow2" class="bi bi-caret-down-fill"></i>
         <span class="filter_title"><%=t('search.filter_by')%><span class="filter_title_bold"><%=t('search.tags')%></span></span>
         <hr class="separator">
-        <div id="filters2" class="filters-open">
+        <div id="filters2" class="filters-close">
           <% @tags_array.uniq.sort.each do |tag| %>
             <% generated_id= "ul-" + tag %>
             <ul class="opened_filter">
@@ -29,92 +32,95 @@
         </div>
       </div>
     </div>
-    <div id="search_results">
-      <div class="dropdown dropdown_order_by">
-        <div class="delete_ordenation">
-          <span><%=t('search.delete_ordenation')%></span>
+    <div id="search_div">
+      <div id="search_results">
+        <div class="dropdown dropdown_order_by">
+          <button class="btn btn_order_by dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%=t('search.order_by')%>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% if @type != 'user' %>
+              <a class="dropdown-item <%= 'sort-active' if @sort_by == 'views' %>" id="views_sort"><%=t('search.views')%></a>
+            <% end %>
+            <a class="dropdown-item <%= 'sort-active' if @sort_by == 'recent_date' %>" id="recent_date"><%=t('search.recent_date')%></a>
+            <a class="dropdown-item <%= 'sort-active' if @sort_by == 'oldest_date' %>" id="oldest_date"><%=t('search.oldest_date')%></a>
+          </div>
         </div>
-        <button class="btn btn_order_by dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%=t('search.order_by')%>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" id="recent_date"><%=t('search.recent_date')%></a>
-          <a class="dropdown-item" id="oldest_date"><%=t('search.oldest_date')%></a>
-        </div>
-      </div>
-      <% if @query.present? %>
-        <div id="text_search">
-          <h3><%=t('search.search_results')%><%= @query %></h3>
-          <i class="bi bi-x-circle-fill" id="btnDeleteSearch"></i>
-        </div>
-      <% end %>
-      <% if @type == 'presentation' %>
-        <div id="final_results" class="presentation_items">
-          <% @results.each do |result| %>
-            <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
-          <% end %>
-        </div>
-      <% elsif @type == 'user' %>
-        <% @results.each do |result| %>
-          <%= link_to "/users/" + result.id.to_s do %>
-            <div class="item_box">
-              <%= image_tag('profile.png',:class => "user_photo"); %>
-              <div class="user_items">
-                <div class="name_email">
-                  <i class="bi bi-person-fill"></i><%= result.name %>
-                </div>
-              </div>
-              <div class="user_email">
-                <%= result.email %>
-              </div>
-            </div>
-          <% end %>
+        <% if @query.present? %>
+          <div id="text_search">
+            <h3><%=t('search.search_results')%>: <%= @query %></h3>
+            <i class="bi bi-x-circle-fill" id="btnDeleteSearch"></i>
+          </div>
         <% end %>
-      <% else %>
-        <div id="final_results" class="items">
-          <% @results2.each do |result| %>
-            <%= link_to "/users/" + result.id.to_s do %>
-              <div class="item_box">
-                <%= image_tag('profile.png',:class => "user_photo"); %>
-                <div class="user_items">
-                  <div class="name_email">
-                    <i class="bi bi-person-fill"></i><%= result.name %>
+        <% if @type == 'presentation' %>
+          <div id="final_results" class="presentation_items">
+            <% @results.each do |result| %>
+              <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
+            <% end %>
+          </div>
+        <% elsif @type == 'link' %>
+          <div id="final_results" class="presentation_items">
+            <% @results.each do |result| %>
+              <% if defined?(result.iframe) %>
+                <%= render 'embeds/embed', embed: result %>
+              <% else %>
+                <%= render 'links/link', link: result %>
+              <% end %>
+            <% end %>
+          </div>
+        <% elsif @type == 'user' %>
+          <div id="final_results" class="items">
+            <% @results.each do |result| %>
+              <%= link_to "/users/" + result.id.to_s do %>
+                <div class="item_box">
+                  <%= image_tag('profile.png',:class => "user_photo"); %>
+                  <div class="user_items">
+                    <div class="name_email">
+                      <i class="bi bi-person-fill"></i><%= result.name %>
+                    </div>
+                  </div>
+                  <div class="user_email">
+                    <%= result.email %>
                   </div>
                 </div>
-                <div class="user_email">
-                  <%= result.email %>
-                </div>
-              </div>
+              <% end %>
             <% end %>
-          <% end %>
-          <% @results.each do |result| %>
-            <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
-          <% end %>
-        </div>
-      <% end%>
+          </div>
+        <% else %>
+          <div id="final_results" class="items">
+            <% @combined_results.each do |result| %>
+              <% if result.respond_to?(:views) %>
+                <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
+              <% elsif result.respond_to?(:iframe) || result.respond_to?(:url)%>
+                <% if defined?(result.iframe) %>
+                  <%= render 'embeds/embed', embed: result %>
+                <% else %>
+                  <%= render 'links/link', link: result %>
+                <% end %>
+              <% else %>
+                <%= link_to "/users/" + result.id.to_s do %>
+                  <div class="item_box">
+                    <%= image_tag('profile.png',:class => "user_photo"); %>
+                    <div class="user_items">
+                      <div class="name_email">
+                        <i class="bi bi-person-fill"></i><%= result.name %>
+                      </div>
+                    </div>
+                    <div class="user_email">
+                      <%= result.email %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end%>
+      </div>
     </div>
   </div>
 </div>
 <script>
   $(document).ready(function() {
-    // Función para realizar la petición AJAX
-    function ajaxRequest(url) {
-      console.log(url)
-      $.ajax({
-        url: url,
-        method: 'GET',
-        success: function(response) {
-          // Manejar la respuesta aquí
-          console.log(response);
-          $("#search_results #final_results").html(response);
-        },
-        error: function(error) {
-          // Manejar el error aquí
-          console.error(error);
-        }
-      });
-    }
-
     var arrowIcon = document.getElementById("arrow");
     var arrowIcon2 = document.getElementById("arrow2");
     var filtersDiv = document.getElementById("filters");
@@ -122,173 +128,126 @@
     var isVisible = true;
     var users = document.getElementById("ul-users");
     var presentations = document.getElementById("ul-presentations");
+    var links = document.getElementById("ul-links");
     var textSearch = document.getElementById("text_search");
     var url = window.location.href; // Obtener la URL actual
 
-    if (url.includes('sort_by')) {
-      var newUrl = url.split((url.includes('&') ? '&sort_by' : '?sort_by'))[0];
-      ajaxRequest(newUrl);
-      window.history.pushState("", "", newUrl);
-    } else {
-      randomOrder();
-    }
+    setTagsFilters();
 
-    if (url.includes('type=user')) {
-      users.classList.add("active-filter");
-    } else if (url.includes('type=presentation')) {
-      presentations.classList.add("active-filter");
-    }
-
-    if (url.includes('tags')) {
-      filtersDiv2.classList.remove("filters-open");
-    }
-
-    var arrayTags = '<%= @tags %>'.split(',')
-    console.log(arrayTags);
-    for (var i = 0; i < arrayTags.length; i++) {
-      var tag = arrayTags[i];
-      console.log(tag)
-      if (tag !== '' && url.includes(tag)) {
-        document.getElementById("ul-" + tag).classList.add("active-filter");
-      }
-    }
-
-    function deleteSelections () {
-      var ulElements = filtersDiv2.querySelectorAll('ul');
-      console.log(ulElements)
-
-      ulElements.forEach(function(ul) {
-        ul.querySelectorAll('div').forEach(function(div) {
-          div.classList.remove('active-filter');
-        });
-      });
-    }
-
-    $('.delete_ordenation').click(function() {
-      var newUrl = url.split('&');
-      console.log(newUrl)
-      if (newUrl.lenght > 2) {
-        for (var i = 0; i < newUrl.length; i++) {
-          if (!newUrl[i].includes('sort')) {
-            newUrlWithoutSort += newUrl[i];
-          }
-        }
-        newUrl = newUrlWithoutSort
-        console.log(newUrlWithoutSort)
-      } else {
-        newUrl = newUrl[0]
-      }
-      ajaxRequest(newUrl);
-      window.history.pushState("", "", newUrl);
+    window.addEventListener('popstate', function(event) {
+      var state = event.state;
+      console.log(111, state)
+      setTagsFilters();
     });
 
     $('#recent_date').click(function() {
-      var url = window.location.href; // Obtener la URL actual
-      var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
-
-      // Construir la nueva URL con la consulta añadida
-      var newUrl = url + separador + 'sort_by=recent_date';
-      ajaxRequest(newUrl);
-      window.history.pushState("", "", newUrl);
-    })
-
-    $('#oldest_date').click(function() {
-      var url = window.location.href; // Obtener la URL actual
-      var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
-
-      // Construir la nueva URL con la consulta añadida
-      var newUrl = url + separador + 'sort_by=oldest_date';
-      ajaxRequest(newUrl);
-      window.history.pushState("", "", newUrl);
-    })
-
-
-    // Botón para añadir una consulta a la URL
-    $('#ul-users').click(function() {
-      var url = window.location.href; // Obtener la URL actual
-      if (url.includes('type=user')) {
-        // Eliminar la consulta de la URL
-        var newUrl = url.replace(url.includes('&') ? '&type=user' : '?type=user', '');
-
-        // Realizar la petición AJAX
-        ajaxRequest(newUrl);
-        window.history.pushState("", "", newUrl);
-      } else if (url.includes('type=presentation')) {
-        if (url.includes('tags')) {
-          var urlToSplit = url.replace('type=presentation', 'type=user');
-          var newUrl = urlToSplit.split(url.includes('&') ? '&tags' : '?tags')[0]
-          deleteSelections()
-        } else {
-        // Eliminar la consulta de la URL
-        var newUrl = url.replace('type=presentation', 'type=user');
-        }
-
-        // Realizar la petición AJAX
-        ajaxRequest(newUrl);
-        window.history.pushState("", "", newUrl);
-      } else {
-        var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
-
-        // Construir la nueva URL con la consulta añadida
-        var newUrl = url + separador + 'type=user';
-
-        // Realizar la petición AJAX
-        ajaxRequest(newUrl);
-        window.history.pushState("", "", newUrl);
-      }
+    handleSortClick('recent_date');
     });
 
-    $('#ul-presentations').click(function() {
-      var url = window.location.href; // Obtener la URL actual
-      if (url.includes('type=presentation')) {
-        if (url.includes('tags')) {
-          var urlToSplit = url.replace(url.includes('&') ? '&type=presentation' : '?type=presentation', '');
-          var newUrl = urlToSplit.split(url.includes('&') ? '&tags' : '?tags')[0]
-          deleteSelections()
-        } else {
-        // Eliminar la consulta de la URL
-          var newUrl = url.replace(url.includes('&') ? '&type=presentation' : '?type=presentation', '');
-        }
+    $('#oldest_date').click(function() {
+      handleSortClick('oldest_date');
+    });
 
-        // Realizar la petición AJAX
-        ajaxRequest(newUrl);
-        window.history.pushState("", "", newUrl);
-      } else if (url.includes('type=user')) {
-        // Eliminar la consulta de la URL
-        var newUrl = url.replace('type=user', 'type=presentation');
-
-        // Realizar la petición AJAX
-        ajaxRequest(newUrl);
-        window.history.pushState("", "", newUrl);
-      } else {
-        var url = window.location.href; // Obtener la URL actual
-        var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
-
-        // Construir la nueva URL con la consulta añadida
-        var newUrl = url + separador + 'type=presentation';
-
-        // Realizar la petición AJAX
-        ajaxRequest(newUrl);
-        window.history.pushState("", "", newUrl);
-      }
+    $('#views_sort').click(function() {
+      handleSortClick('views');
     });
 
     // Botón para eliminar una consulta de la URL
     $('#btnDeleteSearch').click(function() {
-      var query = '<%= j @query %>';
-      var url = window.location.href; // Obtener la URL actual
+      deleteSearchQuery();
+    });
 
-      // Eliminar la consulta de la URL
-      var newUrl = url.replace('&q=' + query, '').replace('?q=' + query, '');
+    // Botón para añadir una consulta a la URL
+    $('#ul-users').click(function() {
+      var url = window.location.href; // Obtener la URL actual
+      var separator = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
+      var filters2Div = document.getElementById('filters2');
+      var divElements = filters2Div.getElementsByTagName('div');
+      for (var i = 0; i < divElements.length; i++) {
+        console.log(divElements[i])
+        // Verifica si la clase "active-filter" está presente
+        if (divElements[i].classList.contains('active-filter')) {
+          // Elimina la clase "active-filter"
+          divElements[i].classList.remove('active-filter');
+        }
+      }
+      if (url.includes('type=user')) {
+        // Eliminar la consulta de la URL
+        var newUrl = url.replace(/\?.*/, '');
+        window.history.pushState("", "", newUrl);
+      } else if (url.includes('?')) {
+        var newUrl = url.replace(/\?.*/, '?type=user');
+        window.history.pushState("", "", newUrl);
+      } else {
+        var newUrl = url + '?type=user';
+        window.history.pushState("", "", newUrl);
+      }
 
       // Realizar la petición AJAX
       ajaxRequest(newUrl);
-      window.history.pushState("", "", newUrl);
-      textSearch.style.display = "none";
+    });
+
+    $('#ul-presentations').click(function() {
+      var url = window.location.href; // Obtener la URL actual
+      var separator = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
+      if (url.includes('type=presentation')) {
+        var filters2Div = document.getElementById('filters2');
+        var divElements = filters2Div.getElementsByTagName('div');
+        for (var i = 0; i < divElements.length; i++) {
+          console.log(divElements[i])
+          // Verifica si la clase "active-filter" está presente
+          if (divElements[i].classList.contains('active-filter')) {
+            // Elimina la clase "active-filter"
+            divElements[i].classList.remove('active-filter');
+          }
+        }
+        var newUrl = url.replace(/\?.*/, '');
+        window.history.pushState("", "", newUrl);
+      } else if (url.includes('?')) {
+        var newUrl = url.replace(/\?.*/, '?type=presentation');
+        window.history.pushState("", "", newUrl);
+      } else {
+        var newUrl = url + '?type=presentation';
+        window.history.pushState("", "", newUrl);
+      }
+
+      // Realizar la petición AJAX
+      ajaxRequest(newUrl);
+    });
+
+    // Botón para añadir una consulta a la URL
+    $('#ul-links').click(function() {
+      var url = window.location.href; // Obtener la URL actual
+      var separator = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
+      var filters2Div = document.getElementById('filters2');
+      var divElements = filters2Div.getElementsByTagName('div');
+      for (var i = 0; i < divElements.length; i++) {
+        console.log(divElements[i])
+        // Verifica si la clase "active-filter" está presente
+        if (divElements[i].classList.contains('active-filter')) {
+          // Elimina la clase "active-filter"
+          divElements[i].classList.remove('active-filter');
+        }
+      }
+      if (url.includes('type=link')) {
+        // Eliminar la consulta de la URL
+        var newUrl = url.replace(/\?.*/, '');
+        window.history.pushState("", "", newUrl);
+      } else if (url.includes('?')) {
+        var newUrl = url.replace(/\?.*/, '?type=link');
+        window.history.pushState("", "", newUrl);
+      } else {
+        var newUrl = url + '?type=link';
+        window.history.pushState("", "", newUrl);
+      }
+
+      // Realizar la petición AJAX
+      ajaxRequest(newUrl);
     });
 
     $('.filter-tags').click(function() {
       var id = $(this).attr('id').substring(3);
+      console.log(id)
       var url = window.location.href; // Obtener la URL actual
       if (url.includes(id)) {
         document.getElementById("ul-" + id).classList.remove("active-filter");
@@ -304,20 +263,23 @@
       } else {
         document.getElementById("ul-" + id).classList.add("active-filter");
         presentations.classList.add("active-filter");
-        var separador = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
+        var separator = url.includes('?') ? '&' : '?'; // Verificar si ya hay consultas en la URL
         // Construir la nueva URL con la consulta añadida
         if (url.includes('type=presentation')) {
           if (url.includes('tags')) {
             var newUrl = url + '%2C' + id;
           } else {
-            var newUrl = url + separador + 'tags=' + id;
+            var newUrl = url + separator + 'tags=' + id;
           }
         } else {
           if (url.includes('type=user')) {
             users.classList.remove("active-filter");
             var newUrl = url.replace('type=user', 'type=presentation') + '&tags=' + id;
+          } else if (url.includes('type=link')) {
+            links.classList.remove("active-filter");
+            var newUrl = url.replace('type=link', 'type=presentation') + '&tags=' + id;
           } else {
-            var newUrl = url + separador + 'type=presentation' + '&tags=' + id;
+            var newUrl = url + separator + 'type=presentation' + '&tags=' + id;
           }
         }
       }
@@ -330,12 +292,12 @@
     if (arrowIcon.classList.contains("bi-caret-down-fill")) {
       arrowIcon.classList.remove("bi-caret-down-fill");
       arrowIcon.classList.add("bi-caret-up-fill");
-      filtersDiv.classList.remove("filters-open");
+      filtersDiv.classList.remove("filters-close");
       isVisible = false;
     } else {
       arrowIcon.classList.remove("bi-caret-up-fill");
       arrowIcon.classList.add("bi-caret-down-fill");
-      filtersDiv.classList.add("filters-open");
+      filtersDiv.classList.add("filters-close");
       isVisible = true;
     }
     });
@@ -344,12 +306,12 @@
     if (arrowIcon2.classList.contains("bi-caret-down-fill")) {
       arrowIcon2.classList.remove("bi-caret-down-fill");
       arrowIcon2.classList.add("bi-caret-up-fill");
-      filtersDiv2.classList.remove("filters-open");
+      filtersDiv2.classList.remove("filters-close");
       isVisible = false;
     } else {
       arrowIcon2.classList.remove("bi-caret-up-fill");
       arrowIcon2.classList.add("bi-caret-down-fill");
-      filtersDiv2.classList.add("filters-open");
+      filtersDiv2.classList.add("filters-close");
       isVisible = true;
     }
     });
@@ -362,6 +324,7 @@
         users.classList.remove("active-filter");
       }
       presentations.classList.remove("active-filter");
+      links.classList.remove("active-filter");
     });
 
     presentations.addEventListener("click", function() {
@@ -371,6 +334,18 @@
       } else {
         presentations.classList.remove("active-filter");
       }
+      users.classList.remove("active-filter");
+      links.classList.remove("active-filter");
+    });
+
+    links.addEventListener("click", function() {
+      var url = window.location.href; // Obtener la URL actual
+      if (url.includes('type=link')) {
+        links.classList.add("active-filter");
+      } else {
+        links.classList.remove("active-filter");
+      }
+      presentations.classList.remove("active-filter");
       users.classList.remove("active-filter");
     });
   });

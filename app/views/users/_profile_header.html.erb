@@ -1,21 +1,19 @@
 <div class="profile_container">
   <% active ||= "presentations" %>
   <div id="user_profile_info">
-    <div class="title">
-      <i class="bi bi-person-fill"></i>
-      <% if @isProfileOwner %>
-        <span><%= current_user.name%></span>
-        <%= link_to(edit_user_registration_path(current_user), class: "edit_profile") do %>
-          <i class="bi bi-pen-fill"></i> <%=t('edit')%>
-        <% end %>
-      <% else %>
-        <span><%=t("profile.title", :name => @profile_user.name)%></span>
+    <i class="bi bi-person-fill"></i>
+    <% if @isProfileOwner %>
+      <span><%= current_user.name%></span>
+      <%= link_to(edit_user_registration_path(current_user), class: "edit_profile") do %>
+        <i class="bi bi-pen-fill"></i> <%=t('dictionary.edit')%>
       <% end %>
-    </div>
+    <% else %>
+      <span><%=t("profile.title", :name => @profile_user.name)%></span>
+    <% end %>
   </div>
   <ul class="nav nav-tabs user-nav">
     <% 
-    tabs = ["presentations", "files"]
+    tabs = ["presentations", "files", "embeds"]
   %>
     <% tabs.each do |resource| %>
       <li id="<%= resource %>_tab" class="<%= (active == resource ? 'active' : '') %>">
@@ -24,6 +22,8 @@
             <i class="bi bi-file-slides-fill"></i>
           <% elsif resource == 'files' %>
             <i class="bi bi-archive-fill"></i>
+          <% elsif resource == 'embeds' %>
+            <i class="bi bi-link-45deg"></i>
           <% end %>
           <%= t(resource.underscore + '.tabtitle') %>
         </a>

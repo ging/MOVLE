@@ -140,6 +140,12 @@ en:
     unlock_instructions: "Didn't receive unlock instructions?"
     unlock_instructions_resend: "Resend unlock instructions"
     username_or_email: "Username or Email"
+  links:
+    new: "Add link"
+    tabtitle: "Links"
+  embeds:
+    new: "Add link"
+    tabtitle: "Links"
   presentations:
     clone:
       success: "The presentation was cloned successfully"
@@ -152,15 +158,18 @@ en:
     recent_presentations: "Recent presentations"
     recommend_presentations: "Recommend presentations"
     popular_presentations: "Popular presentations"
+    files_links: "Links and Files"
   search:
     search: 'Search'
     filter_by: 'Filter by'
     type: 'Type'
     users: 'Users'
     presentations: 'Presentations'
+    links: 'Links'
     tags: 'Tags'
     search_results: 'Search Results'
     order_by: 'Order by'
+    views: "Views"
     recent_date: 'Recent Date'
     oldest_date: 'Oldest Date'
     popularity: 'Popularity'

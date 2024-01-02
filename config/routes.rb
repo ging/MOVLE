@@ -12,8 +12,11 @@ Rails.application.routes.draw do
   resources :users
   match '/users/:id/presentations' => 'users#show_presentations', via: [:get]
   match '/users/:id/files' => 'users#show_files', via: [:get]
+  match '/users/:id/embeds' => 'users#show_embeds', via: [:get]
 
   #Documents
+  resources :embeds
+  resources :links
   resources :documents
   resources :pictures
   resources :zipfiles

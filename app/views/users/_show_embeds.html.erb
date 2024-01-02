@@ -1,0 +1,12 @@
+<div id="embeds" class="tab-pane in active profile_tab">
+  <% if @isProfileOwner %>
+    <%= render 'resources/resource_new', :new_resource_path => new_document_path %>
+  <%end%>
+  <% @embeds.each do |embed| %>
+    <% if defined?(embed.iframe) %>
+      <%= render 'embeds/embed', embed: embed %>
+    <% else %>
+      <%= render 'links/link', link: embed %>
+    <% end %>
+  <% end %>
+</div>

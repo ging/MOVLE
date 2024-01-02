@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 	skip_authorization_check :only => [:frontpage,:home]
 
 	def frontpage
-		@popularItems = Presentation.public_items.sample(12)
+		@popularItems = Presentation.public_items.sample(14)
 		if user_signed_in?
 			redirect_to "/home"
 		else
@@ -15,9 +15,9 @@ class HomeController < ApplicationController
 
 	def home
 		publicItems = Presentation.public_items
-		@latestItems = publicItems.sample(6)
-		@recommendedItems = publicItems.where("id NOT in (?)",@latestItems.map{|r| r.id}).sample(6)
-		@popularItems = publicItems.where("id NOT in (?)",@latestItems.map{|r| r.id} + @recommendedItems.map{|r| r.id}).sample(6)
+		@latestItems = publicItems.sort_by(&:updated_at).reverse.take(7)
+		@popularItems = publicItems.sort_by(&:views).reverse.take(7)
+		@linksfiles= Link.public_items.sample(1) + Embed.public_items.sample(1) + Document.public_items.sample(5)
 
 		respond_to do |format|
 			format.html { render layout: "application" }

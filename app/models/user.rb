@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 	has_many :presentations, :foreign_key => "owner_id", :dependent => :destroy
 	has_many :documents, :foreign_key => "owner_id", :dependent => :destroy
 	has_many :scormfiles, :foreign_key => "owner_id", :dependent => :destroy
+	has_many :embeds, :foreign_key => "owner_id", :dependent => :destroy
+	has_many :links, :foreign_key => "owner_id", :dependent => :destroy
 	has_many :pdfp, :foreign_key => "owner_id", :dependent => :destroy
 
 	before_save :fillTags

@@ -52,6 +52,10 @@ a, a:hover, a:active, a:focus {
 	outline: none !important;
 }
 
+.back_button {
+	display: flex;
+}
+
 a.back_button {
 	text-decoration: none;
 	font-size: 1.2em;
@@ -70,7 +74,7 @@ a.back_button {
 }
 
 #home {
-	padding: 60px 150px 0px 150px;
+	padding: 60px 100px 0px 100px;
 }
 
 @media (max-width: 640px) {
@@ -109,4 +113,26 @@ a.back_button {
 #checkbox-remember {
 	margin: 0px 3px 3px 0px;
 	font-size: 18px !important;
+}
+
+#error_explanation h2 {
+	font-size: 15px !important;
+}
+
+#embed-show {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+}
+
+#embed-show iframe {
+	width: 900px;
+	height: 500px;
+	margin-top: 20px;
+}
+
+#embed-show .embed-description {
+	font-size: larger;
 }

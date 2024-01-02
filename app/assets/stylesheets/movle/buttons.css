@@ -72,6 +72,12 @@ div.movle_secondary_button a {
     font-size: 1.5em !important;
     background-color: rgb(255, 80, 80);
     color: white !important;
+    padding: 6px 14px;
+    border-radius: 30px;
+}
+
+.cancel_account_button:hover{
+    text-decoration: none;
 }
 
 .edit_profile {
@@ -79,6 +85,7 @@ div.movle_secondary_button a {
     background-color: rgba(94,86,105,.68);
     border-radius: 30px;
     padding: 10px 20px;
+    width: 110px;
 }
 
 #return_button {
@@ -87,10 +94,20 @@ div.movle_secondary_button a {
     border-radius: 30px;
     padding: 10px 20px;
     color: white;
-    width: 22%;
+    width: 19%;
+    display: flex;
 }
 
-#return_button i {
+#return_button_doc {
+    font-size: 15px;
+    background-color: rgba(94,86,105,.68);
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: white;
+    width: 105px;
+}
+
+#return_button i, #return_button_doc i {
     margin-right: 5px;
 }
 

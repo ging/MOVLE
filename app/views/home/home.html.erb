@@ -1,23 +1,29 @@
 <div id="home">
   <span class="title-span"><%=t("home.recent_presentations")%></span>
   <hr class="hr-home_style">
-  <div class="card flex-row flex-wrap">
+  <div class="card flex-row flex-wrap home-items">
     <%@latestItems.each do |item| %>
-      <%= render :partial => 'resources/box', :locals  => { :resource => item } %>
-    <% end %>
-  </div>
-  <span class="title-span"><%=t("home.recommend_presentations")%></span>
-  <hr class="hr-home_style">
-  <div class="card flex-row flex-wrap">
-    <%@recommendedItems.each do |item| %>
       <%= render :partial => 'resources/box', :locals  => { :resource => item } %>
     <% end %>
   </div>
   <span class="title-span"><%=t("home.popular_presentations")%></span>
   <hr class="hr-home_style">
-  <div class="card flex-row flex-wrap">
+  <div class="card flex-row flex-wrap home-items">
     <%@popularItems.each do |item| %>
       <%= render :partial => 'resources/box', :locals  => { :resource => item } %>
+    <% end %>
+  </div>
+  <span class="title-span"><%=t("home.files_links")%></span>
+  <hr class="hr-home_style">
+  <div class="card flex-row flex-wrap home-items">
+    <%@linksfiles.each do |item| %>
+      <% if item.respond_to?(:iframe) %>
+        <%= render 'embeds/embed', embed: item %>
+      <% elsif item.respond_to?(:url)%>
+        <%= render 'links/link', link: item %>
+      <% else%>
+        <%= render 'resources/resource', :resource => item %>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user
-  load_and_authorize_resource :except => [:show_scormfiles, :show_presentations, :show_files]
+  load_and_authorize_resource :except => [:show_scormfiles, :show_presentations, :show_files, :show_embeds]
 
   def show
     show_presentations
@@ -15,6 +15,11 @@ class UsersController < ApplicationController
     @files = @profile_user.documents
     @files = @files.public_items unless @isProfileOwner
     @files = @files.sort_by(&:updated_at).reverse
+  end
+
+  def show_embeds
+    @embeds = @profile_user.embeds
+    @embeds = @profile_user.links + @embeds
   end
 
   private

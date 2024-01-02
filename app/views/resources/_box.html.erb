@@ -4,12 +4,6 @@
   <div class="item_thumbnail <%="item_thumbnail_draft_wrapper" if resource.draft %>">
     <%= link_to(presentation_url(resource)) do %>
       <div class="item_thumbnail_img" id="<%=generated_id%>"></div>
-      <% if resource.draft %>
-        <div class="item_thubmnail_draft">
-          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-          Draft
-        </div>
-      <% end %>
     <%end%>
   </div>
   <div class="item_title">
@@ -27,7 +21,7 @@
     </div>
     <div class="d-flex views_after_by">
       <i class="bi bi-eye-fill"></i>
-      <p><%=rand(1..40)%> <%=t('presentations.views')%></p>
+      <p><%=resource.views%> <%=t('presentations.views')%></p>
     </div>
   </div>
 </div>

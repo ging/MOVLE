@@ -72,6 +72,8 @@ class PresentationsController < ApplicationController
     else
       @presentation.draft = false
     end
+    
+    @presentation.views = 0
     @presentation.owner_id = current_user.id
     @presentation.save!
 

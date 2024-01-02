@@ -1,5 +1,5 @@
 #profile {
-	padding: 60px 120px 0px 120px;
+	padding: 60px 100px 0px 100px;
 }
 
 .profile_container {
@@ -14,37 +14,32 @@
 	width: 100%;
 }
 
-.profile_tab_wrapper{
-	display: flex;
-	justify-content: center;
-}
-
 div.profile_tab {
 	display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 #user_profile_info {
 	padding-left: 1px;
 }
 
-#user_profile_info div.title {
+#user_profile_info {
 	font-size: 3.2em;
 	margin-bottom: 40px;
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 }
 
-#user_profile_info div.title i {
+#user_profile_info i {
 	margin-right: 5px;
 }
 
-#user_profile_info div.title span {
+#user_profile_info span {
 	margin-right: 25px;
 }
 
-#user_profile_info div.title a {
+#user_profile_info a {
 	color: white;
 }
 
@@ -74,4 +69,25 @@ ul.nav-tabs.user-nav li:not(.active) a:hover {
 
 .nav-tabs {
     border-bottom: none;
+}
+
+@media (max-width: 700px) {
+	.tab-pane.in.active.profile_tab  {
+	  justify-content: center;
+	}
+}
+
+@media (max-width: 718px) {
+	.tab-pane.in.active.profile_tab  {
+	  justify-content: center;
+	}
+	#embeds_tab {
+		margin-top: 10px;
+	}
+}
+
+@media (max-width: 608px) {
+	#files_tab {
+		margin-top: 10px;
+	}
 }

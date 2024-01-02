@@ -1,29 +1,53 @@
 <div id="new_document_form_wrapper" class="document_form_wrapper">
-	<div class="return">
-		<%= link_to t("dictionary.back"), :back, :class=>"back_button" %>
-	</div>
-	<div id="row_form">
-		<%= form_for (@document || Document.new), url: {action: "create"}, html: {class: "new_document_form document_form"} do |f| %>
-			
-			<%= f.hidden_field :owner_id, :value => current_user.id %>
-			
-			<div class="field">
-				<p class="form_legend"><%=t("dictionary.title")%></p>
-				<%= f.text_field :title, :maxlength => 60, :size => 70, :class => "outlined_input title" %>
-			</div>
-			<div class="field">
-				<p class="form_legend"><%=t("dictionary.description")%></p>
-				<%= f.text_area :description, :cols => 73, :rows => 4, :maxlength => 280, :resize => "none" %>
-			</div>
-			<div class="field">
-				<p class="form_legend"><%=t("dictionary.file")%></p>
-				<%= f.file_field :file, :class => "outlined_input_file" %>
-			</div>
-		
-			<div class="actions">
-				<%= f.submit(t("documents.new"), {class: "movle_button upload_button"}) %>
-			</div>
-
-		<% end %>
-	</div>
+  <%= link_to :back, id: "return_button_doc" do %>
+    <i class="bi bi-arrow-left-circle-fill"></i><%=t("dictionary.back")%>
+  <% end %>
+  <div id="row_form document_form">
+    <!-- Add tabs -->
+    <div class="tabs-row">
+      <div class="col-md-4 tab" id="t1" onclick="changeTab(1)">Documentos</div>
+      <div class="col-md-4 tab" id="t2" onclick="changeTab(2)">Links</div>
+      <div class="col-md-4 tab" id="t3" onclick="changeTab(3)">Embed (Código HTML)</div>
+    </div>
+    <!-- Content for each tab -->
+    <div class="tab-content-doc" id="tab1">
+      <%= form_for (@document || Document.new), url: {action: "create"}, html: {class: ""} do |f| %>
+        <%= f.hidden_field :owner_id, :value => current_user.id %>
+        <div class="field">
+          <p class="form_legend"><%=t("dictionary.file")%></p>
+          <div id="tab_input_file">
+            <p id="text"><%=t("documents.new")%></p>
+            <%= f.file_field :file, :id => "btn-send" %>
+          </div>
+          <div class="field">
+            <p class="form_legend"><%=t("dictionary.title")%></p>
+            <%= f.text_field :title, :class => "outlined_input title" %>
+          </div>
+          <div class="field">
+            <p class="form_legend"><%=t("dictionary.description")%></p>
+            <%= f.text_area :description, {class: "description"} %>
+          </div>
+          <div class="actions">
+            <%= f.submit(t("documents.new"), {class: "movle_button upload_button"}) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="tab-content-doc" id="tab2">
+      <%= render :partial => 'links/new' %>
+    </div>
+    <div class="tab-content-doc" id="tab3">
+      <%= render :partial => 'embeds/new' %>
+    </div>
+  </div>
 </div>
+<script>
+  function changeTab(tabIndex) {
+
+    document.querySelectorAll('.tab-content-doc').forEach(tabContent => tabContent.style.display = 'none');
+    document.querySelectorAll('.tab').forEach(tabContent => tabContent.style.backgroundColor = '#cececeb7');
+
+    document.getElementById('tab' + tabIndex).style.display = 'block';
+    document.getElementById('t' + tabIndex).style.backgroundColor = '#777676ce';
+  }
+</script>

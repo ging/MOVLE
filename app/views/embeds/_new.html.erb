@@ -1,0 +1,18 @@
+<%= form_with(model: Embed.new, url: embeds_path, method: :create) do |f| %>
+  <%= f.hidden_field :owner_id, :value => current_user.id %>
+  <div class="field">
+    <p class="form_legend"><%=t("dictionary.embed")%></p>
+    <%= f.text_field :iframe, :class => "outlined_input iframe" %>
+  </div>
+  <div class="field">
+    <p class="form_legend"><%=t("dictionary.title")%></p>
+    <%= f.text_field :title, :class => "outlined_input title" %>
+  </div>
+  <div class="field">
+    <p class="form_legend"><%=t("dictionary.description")%></p>
+    <%= f.text_area :description, {class: "description"} %>
+  </div>
+  <div class="actions">
+    <%= f.submit('Subir Embed', {class: "movle_button upload_button"}) %>
+  </div>
+<% end %>

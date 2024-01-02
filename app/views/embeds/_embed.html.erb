@@ -1,0 +1,24 @@
+<% generated_id= "embed-" + embed.id.to_s %>
+<div class="item_box item_box_embed_link">
+  <div class="item_thumbnail">
+    <%= link_to(embed_url(embed)) do %>
+      <div class="embed_img">
+        <img src="/assets/link-circle-fill.png"/>
+      </div>
+    <%end%>
+  </div>
+  <div class="item_title">
+    <%= link_to(embed_url(embed)) do %>
+      <p class="title"><%= embed.title %></p>
+    <%end%>
+  </div>
+  <div class="item_user">
+    <div class="d-flex by_date justify-content-between">
+      <span class="author">
+        <span class="by"><%=t('by')%></span>
+        <%= link_to User.find_by(id: embed.owner_id)&.name, user_path(embed.owner_id) if embed.owner_id.present? %>
+      </span>
+      <span><%= embed.created_at.strftime('%d/%m/%Y') %></span>
+    </div>
+  </div>
+</div>

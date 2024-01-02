@@ -1,52 +1,119 @@
-<% if @type == 'presentation' %>
-  <div class="presentation_items">
-    <% @results.each do |result| %>
-      <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
-    <% end %>
+<div id="search_results">
+  <div class="dropdown dropdown_order_by">
+    <button class="btn btn_order_by dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%=t('search.order_by')%>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <% if @type != 'user' %>
+        <a class="dropdown-item <%= 'sort-active' if @sort_by == 'views' %>" id="views_sort"><%=t('search.views')%></a>
+      <% end %>
+      <a class="dropdown-item <%= 'sort-active' if @sort_by == 'recent_date' %>" id="recent_date"><%=t('search.recent_date')%></a>
+      <a class="dropdown-item <%= 'sort-active' if @sort_by == 'oldest_date' %>" id="oldest_date"><%=t('search.oldest_date')%></a>
+    </div>
   </div>
-<% elsif @type == 'user'%>
-  <% @results.each do |result| %>
-    <%= link_to "/users/" + result.id.to_s do %>
-      <div class="item_box">
-        <%= image_tag('profile.png',:class => "user_photo"); %>
-        <div class="user_items">
-          <div class="name_email">
-            <i class="bi bi-person-fill"></i><%= result.name %>
-          </div>
-        </div>
-        <div class="user_email">
-          <%= result.email %>
-        </div>
-      </div>
-    <% end %>
+  <% if @query.present? %>
+    <div id="text_search">
+      <h3><%=t('search.search_results')%>: <%= @query %></h3>
+      <i class="bi bi-x-circle-fill" id="btnDeleteSearch"></i>
+    </div>
   <% end %>
-<% else %>
-  <div id="final_results" class="items">
-    <% @results2.each do |result| %>
-      <%= link_to "/users/" + result.id.to_s do %>
-        <div class="item_box">
-          <%= image_tag('profile.png',:class => "user_photo"); %>
-          <div class="user_items">
-            <div class="name_email">
-              <i class="bi bi-person-fill"></i><%= result.name %>
+  <% if @type == 'presentation' %>
+    <div class="presentation_items" id="final_results">
+      <% @results.each do |result| %>
+        <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
+      <% end %>
+    </div>
+  <% elsif @type == 'link' %>
+    <div id="final_results" class="presentation_items">
+      <% @results.each do |result| %>
+        <% if defined?(result.iframe) %>
+          <%= render 'embeds/embed', embed: result %>
+        <% else %>
+          <%= render 'links/link', link: result %>
+        <% end %>
+      <% end %>
+    </div>
+  <% elsif @type == 'user'%>
+    <div id="final_results" class="items">
+      <% @results.each do |result| %>
+        <%= link_to "/users/" + result.id.to_s do %>
+          <div class="item_box">
+            <%= image_tag('profile.png',:class => "user_photo"); %>
+            <div class="user_items">
+              <div class="name_email">
+                <i class="bi bi-person-fill"></i><%= result.name %>
+              </div>
+            </div>
+            <div class="user_email">
+              <%= result.email %>
             </div>
           </div>
-          <div class="user_email">
-            <%= result.email %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-    <% @results.each do |result| %>
-      <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
-    <% end %>
-  </div>
-<% end%>
+    </div>
+  <% else %>
+    <div id="final_results" class="items">
+      <% @combined_results.each do |result| %>
+        <% if result.respond_to?(:views) %>
+          <%= render :partial => 'resources/box', :locals  => { :resource => result } %>
+        <% elsif result.respond_to?(:iframe) || result.respond_to?(:url)%>
+          <% if defined?(result.iframe) %>
+            <%= render 'embeds/embed', embed: result %>
+          <% else %>
+            <%= render 'links/link', link: result %>
+          <% end %>
+        <% else %>
+          <%= link_to "/users/" + result.id.to_s do %>
+            <div class="item_box">
+              <%= image_tag('profile.png',:class => "user_photo"); %>
+              <div class="user_items">
+                <div class="name_email">
+                  <i class="bi bi-person-fill"></i><%= result.name %>
+                </div>
+              </div>
+              <div class="user_email">
+                <%= result.email %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end%>
+</div>
 <script>
   $(document).ready(function() {
     var url = window.location.href; // Obtener la URL actual
+    console.log(url)
     if (!url.includes('sort_by')) {
       randomOrder();
+    } else {
+      console.log(1, url)
+      var finalResultsDiv = document.getElementById("final_results");
+      if (finalResultsDiv.firstChild) {
+        console.log(2, url)
+        finalResultsDiv.removeChild(finalResultsDiv.firstChild);
+      }
+      var itemBoxes = Array.from(finalResultsDiv.getElementsByClassName("item_box"));
+      itemBoxes.forEach(function(itemBox) {
+        finalResultsDiv.appendChild(itemBox);
+      });
     }
+  });
+
+  $('#recent_date').click(function() {
+  handleSortClick('recent_date');
+  });
+
+  $('#oldest_date').click(function() {
+    handleSortClick('oldest_date');
+  });
+
+  $('#views_sort').click(function() {
+    handleSortClick('views');
+  });
+
+  $('#btnDeleteSearch').click(function() {
+    deleteSearchQuery();
   });
 </script>

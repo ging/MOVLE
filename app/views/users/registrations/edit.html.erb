@@ -33,12 +33,11 @@
         <p class="form_legend">* <%=t("login.password_current_in_settings")%></p>
         <%= f.password_field :current_password, autocomplete: "off", class: "outlined_input" %>
       </div>
-      <div class="actions">
-        <div class="end_row margin_end_row align_center" style="margin-bottom: 10px">
-          <p class="end_row_p"><%= button_to t("account.cancel"), registration_path(resource_name), data: { confirm: t("dictionary.are_you_sure") }, method: :delete, class: "movle_button cancel_account_button" %></p>
-          <%= f.submit(t("account.update"), {class: "movle_button update_account_button"}) %>
-        </div>
+      <div class="actions end_row margin_end_row align_center" style="margin-bottom: 10px">
+        <%= link_to t("account.cancel"), registration_path(resource_name), data: { confirm: t("dictionary.are_you_sure") }, method: :delete, class: "movle_button cancel_account_button" %>
+        <%= f.submit(t("account.update"), data: { confirm: t("dictionary.are_you_sure") }, class: "movle_button update_account_button") %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 </div>

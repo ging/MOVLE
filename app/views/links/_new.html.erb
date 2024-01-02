@@ -1,0 +1,18 @@
+<%= form_with(model: Link.new, url: links_path, method: :create) do |f| %>
+  <%= f.hidden_field :owner_id, :value => current_user.id %>
+  <div class="field">
+    <p class="form_legend">URL</p>
+    <%= f.text_field :url, :class => "outlined_input url-input" %>
+  </div>
+  <div class="field">
+    <p class="form_legend"><%=t("dictionary.title")%></p>
+    <%= f.text_field :title, :class => "outlined_input title" %>
+  </div>
+  <div class="field">
+    <p class="form_legend"><%=t("dictionary.description")%></p>
+    <%= f.text_area :description, {class: "description"} %>
+  </div>
+  <div class="actions">
+    <%= f.submit(t("documents.new"), {class: "movle_button upload_button"}) %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_00_000011) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_31_110056) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_00_000011) do
     t.string "thumbnail_content_type"
     t.bigint "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+  end
+
+  create_table "embeds", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "iframe"
+    t.integer "width", default: 470
+    t.integer "height", default: 353
+    t.boolean "live", default: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.integer "owner_id"
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.integer "owner_id"
   end
 
   create_table "pdfps", id: :serial, force: :cascade do |t|
@@ -64,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_00_000011) do
     t.text "tag_array_text", default: ""
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "views"
   end
 
   create_table "scormfiles", id: :serial, force: :cascade do |t|

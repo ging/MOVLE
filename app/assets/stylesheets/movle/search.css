@@ -15,7 +15,7 @@
     padding-right: 10px;
 }
 
-#search_results {
+#search_div {
     padding: 40px;
     background-color: white;
     border-radius: 30px;
@@ -39,7 +39,7 @@
         flex: 0 0 auto;
         width: 100%;
     }
-    #search_results {
+    #search_div {
         margin-top: 40px;
         flex: 0 0 auto;
         width: 100%;
@@ -89,7 +89,7 @@
     overflow: hidden;
 }
 
-.filters-open {
+.filters-close {
     display: none;
 }
 
@@ -155,10 +155,10 @@
     cursor: pointer;
 }
 
-.delete_ordenation {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-    cursor: pointer;
+.sort-active {
+    background-color: rgba(128, 128, 128, 0.253);
+}
+
+.sort-active:hover{
+    background-color: rgba(128, 128, 128, 0.623);
 }
