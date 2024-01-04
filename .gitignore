@@ -92,3 +92,7 @@ config/deploy/*
 !config/deploy/production.rb
 
 dumps/*
+
+/config/master.key
+
+/config/credentials/production.key

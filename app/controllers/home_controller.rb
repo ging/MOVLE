@@ -15,8 +15,9 @@ class HomeController < ApplicationController
 
 	def home
 		publicItems = Presentation.public_items
-		@latestItems = publicItems.sort_by(&:updated_at).reverse.take(7)
 		@popularItems = publicItems.sort_by(&:views).reverse.take(7)
+		@latestItems = publicItems.where("id NOT in (?)", @popularItems.map { |r| r.id })
+		@latestItems = @latestItems.sort_by(&:created_at).reverse.take(7)
 		@linksfiles= Link.public_items.sample(1) + Embed.public_items.sample(1) + Document.public_items.sample(5)
 
 		respond_to do |format|

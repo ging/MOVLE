@@ -20,8 +20,8 @@ class SearchController < ApplicationController
       # Realiza la búsqueda de personas
       @results = @query.blank? ? User.all : User.where("name ILIKE ?", "%#{@query}%")
     when 'link'
-      # Realiza la búsqueda de personas
-      @results = @query.blank? ? @links : User.where("name ILIKE ?", "%#{@query}%")
+      # Realiza la búsqueda de links
+      @results = @query.blank? ? @links : @links.where("title ILIKE ?", "%#{@query}%")
     when 'presentation'
       # Realiza la búsqueda de archivos
       @results = if @query.blank?
@@ -33,7 +33,9 @@ class SearchController < ApplicationController
       # Combinar resultados de usuarios y presentaciones
       @results = Presentation.where("title ILIKE ?", "%#{@query}%")
       @results_users = User.where("name ILIKE ?", "%#{@query}%")
-      @combined_results = @results + @results_users + @links
+      @link_results = Link.where("title ILIKE ?", "%#{@query}%")
+      @embed_results = Embed.where("title ILIKE ?", "%#{@query}%")
+      @combined_results = @results + @results_users + @link_results + @embed_results
 
       # Ordena aleatoriamente los resultados si ambos conjuntos tienen resultados
       if @combined_results.present?

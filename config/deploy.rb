@@ -5,7 +5,6 @@ require 'yaml'
 
 set :application, "movle"
 set :repo_url, 'https://github.com/ging/MOVLE.git'
-set :deploy_to, '/home/ruben/Escritorio/TFG'
 set :branch, 'ruben-tfg'
 
 set :ssh_options, {
@@ -31,13 +30,18 @@ set :ssh_options, {
 # set :pty, true
 
 # Default value for :linked_files is []
-# append :linked_files, "config/database.yml", 'config/master.key'
+append :linked_files, "config/application_config.yml", 'config/database.yml', 'config/master.key'
 
 # Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "storage"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "storage"
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :ruby_path, '/home/ging/.rvm/rubies/ruby-3.0.0'
+set :bundle_path, '/home/ging/.rvm/gems/ruby-3.0.0'
+
+set :default_env, { 
+  path: "#{fetch(:ruby_path)}/bin:#{fetch(:bundle_path)}/bin:$PATH" 
+}
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
