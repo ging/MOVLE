@@ -51,3 +51,9 @@ set :default_env, {
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+# Especifica que estás utilizando Passenger
+set :passenger_restart_with_touch, true
+
+# Ruta al socket de Passenger
+set :passenger_socket, '/var/www/movle/current/tmp/sockets/passenger.sock'
