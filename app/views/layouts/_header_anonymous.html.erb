@@ -7,7 +7,7 @@
   <%= render partial: 'layouts/search' %>
   <div class="dropdown header_dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="/assets/flags/flag_<%=I18n.locale.to_s%>"/>
+      <img src="/assets/flags/flag_<%=I18n.locale.to_s%>.png"/>
       <div>
         <span class="languagetext"><%=t("dictionary.language")%></span>
       </div>
@@ -16,7 +16,7 @@
       <form id="change_locale" action="/change_locale" action="GET">
         <input name="locale" value="" type="hidden"/>
         <% I18n.available_locales.map(&:to_s).each do |lanCode| %>
-          <li value="<%=lanCode%>"><img src="/assets/flags/flag_<%=lanCode%>"/><%=t("languages." + lanCode)%></li>
+          <li value="<%=lanCode%>"><img src="/assets/flags/flag_<%=lanCode%>.png"/><%=t("languages." + lanCode)%></li>
         <% end %>
       </form>
     </ul>
