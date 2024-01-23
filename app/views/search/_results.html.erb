@@ -36,19 +36,21 @@
   <% elsif @type == 'user'%>
     <div id="final_results" class="items">
       <% @results.each do |result| %>
-        <%= link_to "/users/" + result.id.to_s do %>
-          <div class="item_box">
-            <%= image_tag('profile.png',:class => "user_photo"); %>
-            <div class="user_items">
-              <div class="name_email">
-                <i class="bi bi-person-fill"></i><%= result.name %>
+        <div id="link_to_user">
+          <%= link_to "/users/" + result.id.to_s do %>
+            <div class="item_box">
+              <%= image_tag('profile.png',:class => "user_photo"); %>
+              <div class="user_items">
+                <div class="name_email">
+                  <i class="bi bi-person-fill"></i><%= result.name %>
+                </div>
+              </div>
+              <div class="user_email">
+                <%= result.email %>
               </div>
             </div>
-            <div class="user_email">
-              <%= result.email %>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   <% else %>
@@ -63,19 +65,21 @@
             <%= render 'links/link', link: result %>
           <% end %>
         <% else %>
-          <%= link_to "/users/" + result.id.to_s do %>
-            <div class="item_box">
-              <%= image_tag('profile.png',:class => "user_photo"); %>
-              <div class="user_items">
-                <div class="name_email">
-                  <i class="bi bi-person-fill"></i><%= result.name %>
+          <div id="link_to_user">
+            <%= link_to "/users/" + result.id.to_s do %>
+              <div class="item_box">
+                <%= image_tag('profile.png',:class => "user_photo"); %>
+                <div class="user_items">
+                  <div class="name_email">
+                    <i class="bi bi-person-fill"></i><%= result.name %>
+                  </div>
+                </div>
+                <div class="user_email">
+                  <%= result.email %>
                 </div>
               </div>
-              <div class="user_email">
-                <%= result.email %>
-              </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
     </div>
