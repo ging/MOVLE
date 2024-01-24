@@ -1,5 +1,5 @@
 div.item_box {
-	width: 212px;
+	width: 206px;
 	height: 310px;
 	border: 2px solid #d6d4d4;
 	border-radius: 30px;
@@ -11,12 +11,6 @@ div.item_box {
 	transform: scale(var(--escala, 1));
 	transition: transform 0.2s;
 	background-color: white;
-}
-
-@media (max-width: 1909px) {
-	.home-items .item_box {
-		flex: 0 0 20%;
-	}
 }
 
 @media (max-width: 1300px) {
@@ -83,7 +77,7 @@ div.item_box div.item_thumbnail {
 }
 
 div.item_box div.item_thumbnail > a {
-	width: 80%;
+	width: 60%;
 }
 
 div.item_box div.item_thumbnail_img {
@@ -170,6 +164,7 @@ div.item_box div.item_thubmnail_new a {
 	max-width: 100%;
 	max-height: 100%;
 	overflow: hidden;
+	margin-top: 30px;
 }
   
 .embed_img > img{
@@ -204,9 +199,23 @@ div.item_box div.item_thubmnail_new a {
 }
 
 .item_box_embed_link > .item_user {
-	padding-bottom: 20px !important;
+	padding-bottom: 12px !important;
 }
 
 .item_box_embed_link > .item_thumbnail {
 	height: 155px !important;
+}
+
+#delete_link .movle_button {
+	float: right;
+	margin-right: 18px;
+    margin-bottom: 20px;
+}
+
+#delete_link .movle_button .glyphicon-trash{
+	color: black;
+}
+
+.item_box_picture .item_user .by_date{
+	margin-bottom: 20px;
 }

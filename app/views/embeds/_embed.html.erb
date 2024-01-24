@@ -21,4 +21,9 @@
       <span><%= embed.created_at.strftime('%d/%m/%Y') %></span>
     </div>
   </div>
+  <div id="delete_link">
+    <a href="<%=polymorphic_path(embed)%>" data-confirm="<%=t('dictionary.are_you_sure')%>" data-ok-button="<%=t('dictionary.ok')%>" data-cancel-button="<%=t('dictionary.cancel')%>" data-method="delete" rel="nofollow">
+      <button class="movle_button"><span title='<%=t("dictionary.delete")%>' class="glyphicon glyphicon-trash"></span></button>
+    </a>
+  </div>
 </div>

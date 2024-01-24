@@ -90,16 +90,10 @@ div.frontpage_anonymous {
 }
 
 #items .card {
-	margin: 15px 0px 30px 100px;
+	margin: 15px 0px 30px 55px;
 	border-radius: 20px;
 	border: none;
 	background-color: transparent;
-}
-
-@media (max-width: 1850px) {
-	.front-items .item_box {
-		flex: 0 0 15%;
-	}
 }
 
 @media (max-width: 1450px) {
