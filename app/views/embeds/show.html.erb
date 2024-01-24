@@ -1,5 +1,5 @@
 <div id="embed-show">
   <h1><%= @embed.title %></h1>
   <span class="embed-description"><strong>Descripción:</strong> <%= @embed.description %></span>
-  <%= @embed.iframe.html_safe %>
+  <%= raw @embed.iframe %>
 </div>

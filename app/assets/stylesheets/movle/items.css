@@ -19,13 +19,13 @@ div.item_box {
 	}
 }
 
-@media (max-width: 1090px) {
+@media (max-width: 900px) {
 	.home-items .item_box {
 		flex: 0 0 40%;
 	}
 }
 
-@media (max-width: 770px) {
+@media (max-width: 550px) {
 	.home-items .item_box {
 		flex: 0 0 100%;
 	}
